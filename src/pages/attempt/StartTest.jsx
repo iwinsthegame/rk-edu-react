@@ -231,7 +231,7 @@ export default function StartTest() {
           </div>
 
           <div className="right-actions">
-            <button className="panel-btn" onClick={submitTest}>
+            <button className="btn-submit" onClick={submitTest}>
               Submit
             </button>
           </div>
