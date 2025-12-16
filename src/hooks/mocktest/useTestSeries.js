@@ -1,4 +1,3 @@
-// src/hooks/useTestSeries.js
 import { useEffect, useMemo, useState } from "react";
 import mocktestService from "../../services/mocktest/mocktestService";
 

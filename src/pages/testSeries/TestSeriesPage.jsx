@@ -1,4 +1,3 @@
-// src/pages/mocktest/TestSeries.jsx
 import React from "react";
 import "../../styles/TestSeries.css";
 import ShimmerLoader from "./ShimmerLoader";
