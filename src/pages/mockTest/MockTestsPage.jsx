@@ -54,7 +54,7 @@ export default function MockTestsPage() {
                 <button
                   className="mock-btn leaderboard-btns"
                   onClick={() =>
-                    navigate(`/attempt/leaderboard/12/10`)
+                    navigate(`/attempt/leaderboard/${m.id}/20`)
                   }
                 >
                   Leaderboard
