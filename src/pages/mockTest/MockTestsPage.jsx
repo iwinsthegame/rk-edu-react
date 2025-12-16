@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import Header from "../../pages/home/Header";
 import Footer from "../../pages/home/Footer";
 import { useMocktest } from "../../hooks/mocktest/useMocktest";
-import "./MockTests.css";
+import "../../styles/MockTests.css";
 
 export default function MockTestsPage() {
   const { seriesId } = useParams();
