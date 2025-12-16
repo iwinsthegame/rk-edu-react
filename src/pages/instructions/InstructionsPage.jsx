@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useInstructionsPage } from "../../hooks/mocktest/useInstructionsPage";
-import "./Instruction.css";
+import "../../styles/Instruction.css";
 
 export default function InstructionsPage() {
   const { mocktestId } = useParams();

@@ -1,6 +1,6 @@
 import React from "react";
 import useLeaderboard from "../../hooks/mocktest/useLeaderboard";
-import "./LeaderboardPage.css";
+import "../../styles/LeaderboardPage.css";
 
 export default function LeaderboardPage() {
     const { leaders, loading } = useLeaderboard();
