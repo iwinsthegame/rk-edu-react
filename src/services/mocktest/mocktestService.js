@@ -52,7 +52,12 @@ const mocktestService = {
     fetchLeaderboard: async (mocktestId, limit) => {
         const res = await user_api.get(`/attempt/leaderboard/${mocktestId}/${limit}`);
         return res.data;
+    },
+
+    getInstructionsByMocktestId: async (mocktestId) => {
+        return user_api.get(`/instructions/mocktest/${mocktestId}`);
     }
+
 };
 
 export default mocktestService;

@@ -1,43 +1,17 @@
-// src/pages/mocktest/InstructionsPage.jsx
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
-import { user_api } from "../../api/axiosClient";
+import { useInstructionsPage } from "../../hooks/mocktest/useInstructionsPage";
 import "./Instruction.css";
-
-
-
 
 export default function InstructionsPage() {
   const { mocktestId } = useParams();
-  const [instruction, setInstruction] = useState(null);
+  const { instruction, symbolIcons } = useInstructionsPage(mocktestId);
 
-  // Icon Mapping for Symbols
-  const symbolIcons = {
-    answered: "✔️",
-    not_answered: "⭕",
-    marked: "⭐",
-    marked_and_answered: "🟢",
-    not_visited: "⚪",
-    review: "🔁",
-    warning: "⚠️",
-    info: "ℹ️",
-    default: "🟢"
-  };
-
-  useEffect(() => {
-    user_api
-      .get(`/instructions/mocktest/${mocktestId}`)
-      .then(res => {
-        setInstruction(res.data);
-      })
-      .catch(console.error);
-  }, [mocktestId]);
-
-  if (!instruction) return <div className="loading">Loading instructions...</div>;
+  if (!instruction)
+    return <div className="loading">Loading instructions...</div>;
 
   return (
     <div className="instructions-page">
-
       {/* HEADER */}
       <header className="inst-header fade-down">
         <h1>📘 Test Instructions</h1>
@@ -46,7 +20,6 @@ export default function InstructionsPage() {
 
       {/* CONTENT */}
       <main className="inst-content fade-in">
-
         {/* Title + Description */}
         <div className="inst-card">
           <h2 className="inst-title">{instruction.title}</h2>
@@ -67,11 +40,12 @@ export default function InstructionsPage() {
                   <th>Max Score</th>
                 </tr>
               </thead>
-
               <tbody>
                 {instruction.sections.map((sec) => (
                   <tr key={sec.id}>
-                    <td><span className="badge">{sec.name}</span></td>
+                    <td>
+                      <span className="badge">{sec.name}</span>
+                    </td>
                     <td>{sec.totalQuestions}</td>
                     <td>+{sec.correctMarks}</td>
                     <td>-{sec.negativeMarks}</td>
@@ -83,7 +57,7 @@ export default function InstructionsPage() {
           </div>
         )}
 
-        {/* SYMBOLS WITH ICONS */}
+        {/* SYMBOLS */}
         {instruction.symbols?.length > 0 && (
           <div className="inst-card">
             <h3 className="block-title">🔎 Symbols Used...</h3>
@@ -91,7 +65,6 @@ export default function InstructionsPage() {
             <div className="symbols-grid">
               {instruction.symbols.map((sym) => {
                 const normalized = sym.label?.toLowerCase().trim();
-
                 const iconSymbol =
                   symbolIcons[normalized] || symbolIcons.default;
 
@@ -105,6 +78,7 @@ export default function InstructionsPage() {
             </div>
           </div>
         )}
+
         {/* CATEGORIES */}
         {instruction.categories?.length > 0 && (
           <div className="inst-card">
@@ -122,20 +96,19 @@ export default function InstructionsPage() {
             ))}
           </div>
         )}
-
-
       </main>
 
       {/* FOOTER */}
       <footer className="inst-footer fade-up">
         <button
           className="inst-start-btn"
-          onClick={() => window.location.href = `/mocktest/${mocktestId}/start`}
+          onClick={() =>
+            (window.location.href = `/mocktest/${mocktestId}/start`)
+          }
         >
           Start Test 🚀
         </button>
       </footer>
-
     </div>
   );
 }
