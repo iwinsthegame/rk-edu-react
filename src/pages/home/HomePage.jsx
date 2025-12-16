@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import "./HomePage.css";
+import "../../styles/HomePage.css";
 import { FiBookOpen, FiPlayCircle, FiUsers, FiAward } from "react-icons/fi";
 import { FiChevronRight } from "react-icons/fi";
 import { user_api } from "../../api/axiosClient";
