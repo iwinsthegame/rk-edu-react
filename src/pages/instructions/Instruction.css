@@ -1,0 +1,239 @@
+/* Page Base */
+.instructions-page {
+  background: #f5f7fa;
+  padding: 40px 20px;
+  font-family: "Inter", sans-serif;
+  min-height: 100vh;
+}
+
+/* Loading */
+.loading {
+  padding: 50px;
+  font-size: 22px;
+  text-align: center;
+  color: #475569;
+}
+
+/* Header */
+.inst-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.inst-header h1 {
+  font-size: 32px;
+  font-weight: 800;
+  color: #1e293b;
+}
+
+.inst-header p {
+  color: #64748b;
+  margin-top: 5px;
+  font-size: 16px;
+}
+
+/* Content */
+.inst-content {
+  max-width: 900px;
+  margin: auto;
+}
+
+/* Card Style */
+.inst-card {
+  background: #ffffff;
+  padding: 25px 30px;
+  border-radius: 18px;
+  margin-bottom: 25px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e5e7eb;
+  animation: fadeIn 0.7s ease forwards;
+}
+
+.inst-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.inst-description {
+  font-size: 16px;
+  color: #4b5563;
+  margin-top: 10px;
+}
+
+/* Block Title */
+.block-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 18px;
+  color: #0f172a;
+}
+
+/* Table */
+.inst-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  font-size: 15px;
+}
+
+.inst-table th {
+  background: #eef2ff;
+  color: #1e40af;
+  padding: 12px;
+  font-weight: 700;
+  border-bottom: 2px solid #c7d2fe;
+}
+
+.inst-table td {
+  padding: 12px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.inst-table tr:hover {
+  background: #f8fafc;
+}
+
+/* Badge */
+.badge {
+  display: inline-block;
+  background: #e0e7ff;
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-size: 14px;
+  color: #4338ca;
+  font-weight: 600;
+}
+
+/* Categories */
+.category-block {
+  margin-bottom: 20px;
+}
+
+.category-block h4 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #334155;
+  margin-bottom: 8px;
+}
+
+.category-block ul {
+  padding-left: 20px;
+}
+
+.category-block li {
+  font-size: 15px;
+  color: #475569;
+  margin-bottom: 6px;
+}
+
+/* Symbols */
+.symbols-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.symbol-item {
+  padding: 15px;
+  background: #f1f5f9;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+.symbol-label {
+  display: inline-block;
+  font-weight: 700;
+  color: #1d4ed8;
+  margin-bottom: 5px;
+}
+
+/* Footer */
+.inst-footer {
+  text-align: center;
+  margin-top: 35px;
+}
+
+.inst-start-btn {
+  background: linear-gradient(135deg, #25eb3c, #1d4ed8);
+  color: white;
+  padding: 14px 36px;
+  border: none;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.inst-start-btn:hover {
+  background: linear-gradient(135deg, #1d4ed8, #25eb3c);
+  transform: translateY(-2px);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-down {
+  animation: fadeDown 0.8s ease;
+}
+
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-up {
+  animation: fadeUp 0.8s ease;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Symbol Icon Style */
+.symbol-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px;
+  background: #f8fafc;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+.symbol-icon {
+  font-size: 28px;
+}
+
+.symbol-text {
+  font-size: 15px;
+  color: #475569;
+  line-height: 1.4;
+}
