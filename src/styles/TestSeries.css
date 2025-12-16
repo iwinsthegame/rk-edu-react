@@ -430,3 +430,38 @@
     min-width: 0;
   }
 }
+
+
+/* ===========================
+   SHIMMER LOADER STYLES
+=========================== */
+
+.shimmer-card {
+  pointer-events: none;
+}
+
+/* Shared shimmer animation */
+.shimmer-box,
+.shimmer-line {
+  background: linear-gradient(90deg,
+      #eeeeee 25%,
+      #f5f5f5 37%,
+      #eeeeee 63%);
+  background-size: 400% 100%;
+  animation: shimmer 1.4s ease infinite;
+}
+
+.shimmer-line {
+  margin-top: 8px;
+}
+
+/* Keyframes */
+@keyframes shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+
+  100% {
+    background-position: -100% 0;
+  }
+}

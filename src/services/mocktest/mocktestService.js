@@ -2,6 +2,12 @@
 import { user_api } from "../../api/axiosClient";
 
 const mocktestService = {
+
+    fetchTestSeries: async () => {
+        const res = await user_api.get(`/testseries`);
+        return res.data;
+    },
+
     startAttempt: async (mocktestId) => {
         const res = await user_api.post(`/attempt/start/${mocktestId}/2`);
         return res.data;

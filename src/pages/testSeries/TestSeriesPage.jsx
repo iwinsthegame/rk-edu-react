@@ -1,113 +1,39 @@
-import React, { useEffect, useMemo, useState, useRef } from "react";
-import "./TestSeries.css";
-import { user_api } from "../../api/axiosClient"; // your axios instance
+// src/pages/mocktest/TestSeries.jsx
+import React from "react";
+import "../../styles/TestSeries.css";
 import ShimmerLoader from "./ShimmerLoader";
-import Studyimage from '../../assets/studyimage.jpg';
-import { Link, useParams } from 'react-router-dom'
+import Studyimage from "../../assets/studyimage.jpg";
+import { Link } from "react-router-dom";
 import Header from "../../pages/home/Header";
 import Footer from "../../pages/home/Footer";
+import { useTestSeries } from "../../hooks/mocktest/useTestSeries";
 
-// Helper: debounce hook
-function useDebouncedValue(value, delay = 400) {
-  const [debounced, setDebounced] = useState(value);
-  useEffect(() => {
-    const id = setTimeout(() => setDebounced(value), delay);
-    return () => clearTimeout(id);
-  }, [value, delay]);
-  return debounced;
-}
+export default function TestSeriesPage() {
+  const {
+    loading,
+    error,
+    filtered,
+    categories,
+    subCategories,
+    selectedCategory,
+    setSelectedCategory,
+    selectedSubCategory,
+    setSelectedSubCategory,
+    search,
+    setSearch,
+  } = useTestSeries();
 
-export default function TestSeries() {
-  const [seriesList, setSeriesList] = useState([]); // full API data
-  const [filtered, setFiltered] = useState([]); // filtered list for UI
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  // console.log("useTestSeries values:", {
+  //   loading,
+  //   error,
+  //   filtered,
+  //   categories,
+  //   subCategories,
+  //   selectedCategory,
+  //   selectedSubCategory,
+  //   search,
+  // });
 
-  const [selectedCategory, setSelectedCategory] = useState("All");
-  const [selectedSubCategory, setSelectedSubCategory] = useState("All");
-
-  const [search, setSearch] = useState("");
-  const debouncedSearch = useDebouncedValue(search, 450);
-
-  // fetch on mount
-  useEffect(() => {
-    let mounted = true;
-    setLoading(true);
-    setError(null);
-
-
-    user_api.get("/testseries")
-      .then((res) => {
-        if (!mounted) return;
-        // normalize: ensure array
-        const payload = Array.isArray(res.data) ? res.data : [res.data];
-        setSeriesList(payload);
-        setFiltered(payload);
-        setLoading(false);
-      })
-      .catch((err) => {
-        if (!mounted) return;
-        setError("Failed to load test series");
-        setLoading(false);
-        console.error(err);
-      });
-
-    return () => { mounted = false; };
-  }, []);
-
-  // build category list
-  const categories = useMemo(() => {
-    const cats = new Set(seriesList.map(s => s.examCategory || "Other"));
-    return ["All", ...Array.from(cats)];
-  }, [seriesList]);
-
-  //build subcategory list
-
-  const subCategories = useMemo(() => {
-    if (selectedCategory === "All") return [];
-
-    const subs = seriesList
-      .filter(s => s.examCategory === selectedCategory)
-      .map(s => s.examSubCategory)
-      .filter(Boolean);
-
-    return ["All", ...Array.from(new Set(subs))];
-  }, [seriesList, selectedCategory]);
-
-
-  useEffect(() => {
-    const keyword = (debouncedSearch || "").trim().toLowerCase();
-
-    let result = seriesList;
-
-    // Filter by category
-    if (selectedCategory !== "All") {
-      result = result.filter(
-        s => s.examCategory === selectedCategory
-      );
-    }
-
-    // Filter by subcategory
-    if (selectedSubCategory !== "All") {
-      result = result.filter(
-        s => s.examSubCategory === selectedSubCategory
-      );
-    }
-
-    // Search filter
-    if (keyword) {
-      result = result.filter(s =>
-        (s.title || "").toLowerCase().includes(keyword) ||
-        (s.examCategory || "").toLowerCase().includes(keyword) ||
-        (s.examSubCategory || "").toLowerCase().includes(keyword)
-      );
-    }
-
-    setFiltered(result);
-  }, [seriesList, selectedCategory, selectedSubCategory, debouncedSearch]);
-
-
-  // UI
   return (
     <div className="ts-header" ><Header />
       <div className="ts-page">
@@ -229,11 +155,11 @@ function TestSeriesCard({ series }) {
         <hr className="ts-sep" />
 
         {/* <ul className="ts-features">
-          {(series.mockTests || []).slice(0, 4).map(test => (
-            <li key={test.id}>{test.title}</li>
-          ))}
-          {totalTests > 4 && <li className="ts-more">+{totalTests - 4} more tests</li>}
-        </ul> */}
+            {(series.mockTests || []).slice(0, 4).map(test => (
+              <li key={test.id}>{test.title}</li>
+            ))}
+            {totalTests > 4 && <li className="ts-more">+{totalTests - 4} more tests</li>}
+          </ul> */}
 
         <div className="ts-card-footer">
           <div className="ts-duration">{series.mockTests && series.mockTests[0] ? `${series.mockTests[0].durationMinutes} mins` : ""}</div>

@@ -1,5 +1,7 @@
 import React from "react";
-import "./TestSeries.css";
+import "../../styles/TestSeries.css";
+
+
 
 /* A skeleton card that uses the same CSS file for styles/shimmer definitions */
 export default function ShimmerLoader() {
@@ -21,3 +23,6 @@ export default function ShimmerLoader() {
         </div>
     );
 }
+
+
+
