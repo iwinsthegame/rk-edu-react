@@ -2,12 +2,14 @@ import React, { useState, useRef, useEffect } from "react";
 import "../../styles/Header.css";
 import { examCategories, examList } from "./examData";
 import HomePage from "./HomePage";
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, useNavigate } from 'react-router-dom'
+
 
 export default function Header() {
     const [openExam, setOpenExam] = useState(false);
     const [activeCategory, setActiveCategory] = useState(0); // default to first category
     const dropdownRef = useRef(null);
+    const navigate = useNavigate();
 
     // Close dropdown if clicked outside
     useEffect(() => {
@@ -29,7 +31,22 @@ export default function Header() {
 
             {/* HEADER TOP BAR */}
             <header className="tb-header">
-                <div className="tb-logo">
+                {/* <div className="tb-logo">
+
+                    <span className="logo-icon" onClick={() =>
+                        navigate(`/attempt/leaderboard/12/20`)
+                    }>🎓</span>
+                    PrepMaster
+
+                </div> */}
+
+                <div
+                    className="tb-logo"
+                    onClick={() =>
+                        navigate(`/`)
+                    }
+                // style={{ cursor: "pointer" }}
+                >
                     <span className="logo-icon">🎓</span>
                     PrepMaster
                 </div>

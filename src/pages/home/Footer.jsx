@@ -42,8 +42,8 @@ export default function Footer() {
                 <div className="footer-section">
                     <h3>Contact</h3>
                     <ul>
-                        <li>Email: support@prepmaster.com</li>
-                        <li>Phone: +91 98765 43210</li>
+                        <li>Email: support@rk-prepmaster.com</li>
+                        <li>Phone: +91 9115262451</li>
                         <li>Location: India</li>
                     </ul>
                 </div>

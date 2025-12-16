@@ -38,9 +38,7 @@ export default function App() {
         </Routes>
       </main>
 
-      <footer className="footer">
-        Built with ❤️
-      </footer>
+
     </div>
   )
 }

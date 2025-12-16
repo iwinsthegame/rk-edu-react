@@ -242,9 +242,20 @@
     margin-left: 12px;
 }
 
+.btn-submit {
+    background: #6dcb69;
+    color: #fff;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 4px;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 20px;
+}
+
 .left-controls .btn.review {
-    background: #cfe0ff;
-    border-color: #91b8ff;
+    background: #527fd4;
+    border-color: #558cf2;
 }
 
 .right-controls .btn.save {
