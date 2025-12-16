@@ -1,0 +1,27 @@
+.main-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Make header fixed */
+.tb-header {
+    /* or Header component wrapper class */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 70px;
+    /* your header height */
+    z-index: 1000;
+    background-color: #fff;
+    /* keep header background to cover content */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Add padding to main so content starts below header */
+.main-content {
+    padding-top: 70px;
+    /* same as header height */
+    flex: 1;
+}

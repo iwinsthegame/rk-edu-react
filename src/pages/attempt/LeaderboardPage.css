@@ -1,0 +1,152 @@
+.lb-root {
+    padding: 30px;
+    max-width: 1100px;
+    margin: auto;
+    background-color: #636e72
+}
+
+.lb-title {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+.lb-loading {
+    text-align: center;
+    padding: 40px;
+    font-size: 20px;
+}
+
+
+/* ----------------- TOP 3 WINNERS ----------------- */
+
+.lb-top-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    gap: 20px;
+}
+
+.lb-top-card {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 18px;
+    padding: 22px;
+    text-align: center;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    transition: transform 0.3s;
+}
+
+.lb-top-card:hover {
+    transform: translateY(-5px);
+}
+
+.rank-badge {
+    background: #ffbb00;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 18px;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.lb-top-card h3 {
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.top-score {
+    font-size: 26px;
+    font-weight: 700;
+    color: #2ecc71;
+}
+
+.top-marks {
+    display: block;
+    margin-top: 6px;
+    font-size: 14px;
+    color: #555;
+}
+
+/* Gold, Silver & Bronze colors */
+.rank-1 {
+    border-top: 6px solid #f1c40f;
+}
+
+.rank-2 {
+    border-top: 6px solid #bdc3c7;
+}
+
+.rank-3 {
+    border-top: 6px solid #d35400;
+}
+
+
+/* ----------------- TABLE ----------------- */
+
+.lb-table-container {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+}
+
+.lb-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.lb-table th {
+    padding: 14px;
+    background: #f7f7f7;
+    font-size: 16px;
+    font-weight: 600;
+    color: #555;
+}
+
+.lb-table td {
+    padding: 14px;
+    text-align: center;
+    font-size: 16px;
+    border-bottom: 1px solid #eee;
+}
+
+/* Rank chip for table */
+.rank-chip {
+    padding: 6px 14px;
+    border-radius: 16px;
+    font-weight: 600;
+    color: white;
+}
+
+.rank-chip.rank-1 {
+    background: #f1c40f;
+}
+
+.rank-chip.rank-2 {
+    background: #bdc3c7;
+}
+
+.rank-chip.rank-3 {
+    background: #d35400;
+}
+
+.rank-chip {
+    background: #636e72;
+}
+
+/* Hover */
+.lb-table tbody tr:hover {
+    background: #f9f9f9;
+    transition: 0.2s;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .lb-top-container {
+        flex-direction: column;
+    }
+}

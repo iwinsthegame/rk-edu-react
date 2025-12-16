@@ -1,0 +1,285 @@
+/* ROOT */
+.res-root {
+    padding: 25px;
+    font-family: "Inter", sans-serif;
+    background: #f4f6fb;
+    min-height: 100vh;
+}
+
+/* HEADER */
+.res-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 25px;
+}
+
+.res-header h2 {
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 4px;
+    color: #1c1f3b;
+}
+
+.test-subtitle {
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.attempt-id {
+    padding: 8px 14px;
+    background: #ecebff;
+    border-radius: 14px;
+    color: #4c4cff;
+    font-weight: 600;
+}
+
+/* GRID */
+.top-grid {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 25px;
+}
+
+/* SCORE CARD */
+.score-card {
+    background: white;
+    border-radius: 18px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.score-circle {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    margin: auto;
+    background: linear-gradient(145deg, #5b72ff, #8693ff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+}
+
+.score-main {
+    font-size: 48px;
+    font-weight: 800;
+}
+
+.score-label {
+    font-size: 14px;
+    opacity: 0.85;
+}
+
+/* METRICS GRID */
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+}
+
+.metric-card {
+    background: white;
+    padding: 15px;
+    border-radius: 14px;
+    text-align: center;
+    font-weight: 600;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.07);
+    transition: 0.2s;
+}
+
+.metric-card:hover {
+    transform: translateY(-5px);
+}
+
+.metric-card h4 {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.metric-card.correct {
+    background: #e8ffe8;
+    color: #0a8839;
+}
+
+.metric-card.wrong {
+    background: #ffe5e5;
+    color: #d93c3c;
+}
+
+.metric-card.skipped {
+    background: #fff7d7;
+    color: #b88e00;
+}
+
+.metric-card.accuracy {
+    background: #e5efff;
+    color: #2e5cc7;
+}
+
+.metric-card.time {
+    background: #ede6ff;
+    color: #593bff;
+}
+
+/* CHART CARD */
+
+.chart-summary-row {
+    display: flex;
+    gap: 25px;
+    /* space between chart and summary */
+    align-items: flex-start;
+    /* align top edges */
+}
+
+.chart-card {
+    margin-top: 30px;
+    padding: 25px;
+    flex: 2;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+.chart-bars {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    height: 200px;
+    margin-top: 25px;
+    background: #f9f9f9;
+    /* temporary debug color */
+}
+
+
+
+.bar-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* center everything horizontally */
+}
+
+.bar-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    /* bar grows from bottom */
+}
+
+.bar-value {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    /* space between value and bar */
+    color: #333;
+}
+
+.bar-label {
+    margin-top: 8px;
+    /* space between bar and label */
+    font-size: 14px;
+    color: #555;
+}
+
+.bar {
+    width: 55px;
+    border-radius: 8px;
+    transition: height 0.7s ease-out;
+}
+
+
+
+.correct-bar {
+    background: #2ecc71;
+}
+
+.wrong-bar {
+    background: #e74c3c;
+}
+
+.skip-bar {
+    background: #bdc3c7;
+}
+
+.bar-group span {
+    margin-top: 8px;
+    display: block;
+    font-size: 14px;
+    color: #555;
+}
+
+
+
+
+
+/* SUMMARY BOX */
+.summary-box {
+    margin-top: 30px;
+    background: white;
+    padding: 20px;
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+    font-size: 17px;
+}
+
+
+
+
+.summary-box {
+    flex: 1;
+    /* smaller width */
+}
+
+
+
+
+/* BUTTONS */
+.res-actions {
+    margin-top: 35px;
+    text-align: center;
+}
+
+.btn {
+    padding: 14px 26px;
+    border: none;
+    border-radius: 12px;
+    font-size: 17px;
+    font-weight: 700;
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+.btn.review {
+    background: #4d6bff;
+    color: white;
+}
+
+.btn.home {
+    background: #ececff;
+    color: #4d58ff;
+}
+
+.chart-bars {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    height: 220px;
+    margin-top: 25px;
+    padding-bottom: 10px;
+}
+
+/* Animated bars */
+.bar {
+    width: 45px;
+    border-radius: 8px;
+    transition: height 0.7s ease-out;
+}
