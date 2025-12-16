@@ -8,6 +8,10 @@ const mocktestService = {
         return res.data;
     },
 
+    getMockTestsBySeriesId: async (seriesId) => {
+        return user_api.get(`/mocktest/testseries/${seriesId}`);
+    },
+
     startAttempt: async (mocktestId) => {
         const res = await user_api.post(`/attempt/start/${mocktestId}/2`);
         return res.data;
