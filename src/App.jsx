@@ -9,6 +9,7 @@ import LeaderboardPage from './pages/attempt/LeaderboardPage'
 import HomePage from './pages/home/HomePage'
 import Header from './pages/home/Header'
 import MainPage from './pages/home/MainPage'
+import PyqPage from './pages/pyq/PyqPage'
 
 
 
@@ -24,6 +25,7 @@ export default function App() {
           <Route path="/" element={<MainPage />} />
           <Route path="/okk" element={<Header />} />
           <Route path="/testseries" element={<TestSeriesPage />} />
+          <Route path="/pyqpage" element={<PyqPage />} />
           <Route path="/mocktest/testseries/:seriesId" element={<MockTestsPage />} />
           <Route path="/instructions/mocktest/:mocktestId" element={<InstructionsPage />} />
           <Route path="/mocktest/:mocktestId/start" element={<StartTest />} />
