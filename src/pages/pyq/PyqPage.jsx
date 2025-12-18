@@ -8,131 +8,131 @@ export default function PyqPage() {
     const [pyqs, setPyqs] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    const [category, setCategory] = useState("All");
-    const [subCategory, setSubCategory] = useState("All");
     const [year, setYear] = useState("All");
+    const [stage, setStage] = useState([]);
 
     useEffect(() => {
-        user_api.get("/pyq").then(res => {
+        user_api.get("/pyq").then((res) => {
             setPyqs(res.data || []);
             setLoading(false);
         });
     }, []);
 
-    /* ----- filters ----- */
-    const categories = useMemo(
-        () => ["All", ...new Set(pyqs.map(p => p.examCategory))],
-        [pyqs]
-    );
-
-    const subCategories = useMemo(() => {
-        if (category === "All") return ["All"];
-        return ["All", ...new Set(
-            pyqs.filter(p => p.examCategory === category)
-                .map(p => p.examSubCategory)
-        )];
-    }, [category, pyqs]);
-
     const years = useMemo(
-        () => ["All", ...new Set(pyqs.map(p => p.year))].sort((a, b) => b - a),
+        () => [...new Set(pyqs.map((p) => p.year))].sort((a, b) => b - a),
         [pyqs]
     );
 
-    const filtered = pyqs.filter(p =>
-        (category === "All" || p.examCategory === category) &&
-        (subCategory === "All" || p.examSubCategory === subCategory) &&
-        (year === "All" || p.year === year)
+    const filtered = pyqs.filter(
+        (p) =>
+            (year === "All" || p.year === year) &&
+            (stage.length === 0 || stage.includes(p.examSubCategory))
     );
+
+    const toggleStage = (val) => {
+        setStage((prev) =>
+            prev.includes(val) ? prev.filter((s) => s !== val) : [...prev, val]
+        );
+    };
 
     return (
-        <div>
+        <>
             <Header />
 
             <div className="pyq-page">
-                <h2 className="pyq-title">Previous Year Question Papers</h2>
+                {/* LEFT */}
+                <div className="pyq-left">
+                    <h1 className="pyq-heading">
+                        SSC CGL 2025 Question Paper <span>(Total Tests: {filtered.length})</span>
+                    </h1>
 
-                {/* Filters */}
-                <div className="pyq-filters">
-                    <select value={category} onChange={e => setCategory(e.target.value)}>
-                        {categories.map(c => <option key={c}>{c}</option>)}
-                    </select>
-
-                    <select value={subCategory} onChange={e => setSubCategory(e.target.value)}>
-                        {subCategories.map(sc => <option key={sc}>{sc}</option>)}
-                    </select>
-
-                    <select value={year} onChange={e => setYear(e.target.value)}>
-                        {years.map(y => <option key={y}>{y}</option>)}
-                    </select>
+                    {loading ? (
+                        <div className="pyq-loading">Loading...</div>
+                    ) : (
+                        filtered.map((p, i) => <PyqCard key={p.id} pyq={p} index={i} />)
+                    )}
                 </div>
 
-                {/* Content */}
-                {loading ? (
-                    <div className="pyq-loading">Loading PYQs...</div>
-                ) : filtered.length === 0 ? (
-                    <div className="pyq-empty">No PYQs found</div>
-                ) : (
-                    <div className="pyq-grid">
-                        {filtered.map(p => (
-                            <PyqCard key={p.id} pyq={p} />
+                {/* RIGHT FILTERS */}
+                <div className="pyq-right">
+                    <div className="filter-box">
+                        <h4>Select Stage</h4>
+                        {["Tier I", "Tier II"].map((s) => (
+                            <label key={s}>
+                                <input
+                                    type="checkbox"
+                                    checked={stage.includes(s)}
+                                    onChange={() => toggleStage(s)}
+                                />
+                                {s}
+                            </label>
                         ))}
                     </div>
-                )}
+
+                    <div className="filter-box">
+                        <h4>Select Year</h4>
+                        {years.map((y) => (
+                            <label key={y}>
+                                <input
+                                    type="checkbox"
+                                    checked={year === y}
+                                    onChange={() => setYear(y)}
+                                />
+                                {y}
+                            </label>
+                        ))}
+                    </div>
+                </div>
             </div>
 
             <Footer />
-        </div>
+        </>
     );
 }
 
-/* ---------- Card ---------- */
+/* ---------- CARD ---------- */
 
-function PyqCard({ pyq }) {
+function PyqCard({ pyq, index }) {
+    const isFree = index === 0;
+
     return (
         <div className="pyq-card">
             <div className="pyq-card-top">
-                <span className="pyq-badge">{pyq.examCategory}</span>
-                <span className="pyq-year">{pyq.year}</span>
+                <div className="badges">
+                    <span className={`badge ${isFree ? "free" : "pro"}`}>
+                        {isFree ? "FREE" : "PAID"}
+                    </span>
+                    {/* {isFree && <span className="badge must">MUST ATTEMPT</span>} */}
+                </div>
+
+                <div className="users">⚡ {Math.floor(Math.random() * 50) + 5}k Users</div>
             </div>
 
-            <h3 className="pyq-name">{pyq.title}</h3>
-            <p className="pyq-sub">{pyq.examSubCategory}</p>
+            <h3 className="pyq-title">{pyq.title}</h3>
+
+            <div className="pyq-meta">
+                <span>📝 100 Questions</span>
+                <span>🏆 200 Marks</span>
+                <span>⏱ 60 Mins</span>
+            </div>
+
+            <div className="pyq-lang">🌐 English, Hindi + 6 More</div>
 
             <div className="pyq-actions">
-                {/* <a
-                    href={pyq.pdfUrl}
+                <a
+                    href={`http://localhost:8080${pyq.pdfUrl}`}
                     target="_blank"
                     rel="noreferrer"
                     className="btn-outline"
                 >
                     View PDF
-                </a> */}
-
-                <a
-                    href={`http://localhost:8080${pyq.pdfUrl}`}
-                    target="_blank"
-                    rel="noreferrer"
-                >
-                    View PDF
                 </a>
 
-
-                {/* <a
-                    href={pyq.pdfUrl}
-                    download
-                    className="btn-solid"
-                >
-                    Download
-                </a> */}
-
-                <a
-                    href={`http://localhost:8080${pyq.pdfUrl}`}
-                    download
-                >
-                    Download
-                </a>
-
-
+                {isFree ? (
+                    <button className="btn-solid">Start Now</button>
+                ) : (
+                    <button className="btn-lock">🔒 Unlock Now</button>
+                )}
             </div>
         </div>
     );
