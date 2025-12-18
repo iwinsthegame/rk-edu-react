@@ -110,7 +110,7 @@ export default function Header() {
                         Courses
                     </Link>
 
-                    <Link to={`/pyqpage/`} className="tb-nav-item">
+                    <Link to={`/pyppage/`} className="tb-nav-item">
                         PYQ
                     </Link>
                     {/* <a className="tb-nav-item">PYQ</a> */}

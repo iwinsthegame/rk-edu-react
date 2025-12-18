@@ -9,7 +9,8 @@ import LeaderboardPage from './pages/attempt/LeaderboardPage'
 import HomePage from './pages/home/HomePage'
 import Header from './pages/home/Header'
 import MainPage from './pages/home/MainPage'
-import PyqPage from './pages/pyq/PyqPage'
+import PYPPage from './pages/pyq/PYPPage'
+import PyqListPage from './pages/pyq/PyqListPage'
 
 
 
@@ -25,12 +26,13 @@ export default function App() {
           <Route path="/" element={<MainPage />} />
           <Route path="/okk" element={<Header />} />
           <Route path="/testseries" element={<TestSeriesPage />} />
-          <Route path="/pyqpage" element={<PyqPage />} />
+          <Route path="/pyppage" element={<PYPPage />} />
           <Route path="/mocktest/testseries/:seriesId" element={<MockTestsPage />} />
           <Route path="/instructions/mocktest/:mocktestId" element={<InstructionsPage />} />
           <Route path="/mocktest/:mocktestId/start" element={<StartTest />} />
           <Route path="/attempt/:attemptId/result/:studentId" element={<ResultPage />} />
           <Route path="/attempt/leaderboard/:mockTestId/:limit" element={<LeaderboardPage />} />
+          <Route path="/pyq/subcategory/:subCategoryId" element={<PyqListPage />} />
           {/* <Route path="/mocktest/:mockTestId/start/:attemptId?" element={<StartAttemptPage />} />
           <Route path="/attempt/:attemptId/result" element={<ResultPage />} />
           <Route path="/leaderboard/:mockTestId" element={<LeaderboardPage />} />
