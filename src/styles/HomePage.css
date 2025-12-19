@@ -254,7 +254,8 @@
 }
 
 .stat-card {
-    background: #313a351d;
+    /* background: #313a351d; */
+    background: linear-gradient(135deg, #eef2ff, #ffffff);
     padding: 25px 30px;
     border-radius: 18px;
     text-align: center;
@@ -423,7 +424,7 @@
 
 .course-body p {
     font-size: 0.9rem;
-    color: #64748b;
+    color: #235498;
     margin-bottom: 14px;
 }
 
