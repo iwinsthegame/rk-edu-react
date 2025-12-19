@@ -53,15 +53,63 @@
     gap: 24px;
 }
 
+
 /* EXAM CARD */
 .exam-card {
     background: linear-gradient(135deg, #ffffff, #f6f8ff);
-    padding: 22px;
-    border-radius: 16px;
-    cursor: pointer;
-    transition: all 0.35s ease;
+    padding: 22px 18px;
+    border-radius: 18px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+
+    /* FIXED SIZE */
+    height: 100px;
+    width: 80%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* centers logo + text */
+    text-align: center;
+
+    transition: all 0.35s ease;
 }
+
+
+.exam-logo {
+    width: 60px;
+    height: 50px;
+    object-fit: contain;
+    margin-bottom: 1px;
+    margin-top: 15px;
+
+    padding: 10px;
+    border-radius: 16px;
+
+    background: linear-gradient(135deg,
+            rgba(240, 244, 255, 0.9),
+            rgba(255, 255, 255, 0.9));
+
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+
+    transition: transform 0.3s ease;
+}
+
+.exam-card:hover .exam-logo {
+    transform: scale(1.1);
+}
+
+.exam-title {
+    font-size: 17px;
+    font-weight: 600;
+    color: #1f2a44;
+}
+
+
+
 
 .exam-card:hover {
     transform: translateY(-8px) scale(1.02);
@@ -336,4 +384,31 @@
     .faq-question {
         font-size: 15px;
     }
+}
+
+
+/* ================= SEARCH ================= */
+.explore-search {
+    margin: 20px 0 28px;
+    display: flex;
+    justify-content: center;
+}
+
+.explore-search input {
+    width: 100%;
+    max-width: 420px;
+    padding: 12px 16px;
+    border-radius: 14px;
+    border: 1px solid #e2e8f0;
+    font-size: 15px;
+    outline: none;
+    background: white;
+
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+    transition: all 0.25s ease;
+}
+
+.explore-search input:focus {
+    border-color: #5b7cfa;
+    box-shadow: 0 0 0 3px rgba(91, 124, 250, 0.15);
 }
