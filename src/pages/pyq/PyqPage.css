@@ -4,6 +4,7 @@
     gap: 32px;
     padding: 80px 6%;
     background: #f6f8fa;
+    align-items: flex-start;
 }
 
 /* LEFT */
@@ -121,8 +122,14 @@
 /* RIGHT */
 .pyq-right {
     position: sticky;
-    top: 90px;
+    top: 190px;
+    align-self: flex-start;
 }
+
+.pyq-left {
+    min-height: 100vh;
+}
+
 
 .filter-box {
     background: #fff;
@@ -149,5 +156,220 @@
 @media (max-width: 900px) {
     .pyq-page {
         grid-template-columns: 1fr;
+    }
+}
+
+
+
+.pyq-search {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 26px;
+    background: #ffffff;
+    padding: 12px 16px;
+    border-radius: 14px;
+    box-shadow: 0 10px 28px rgba(16, 24, 40, 0.08);
+}
+
+.pyq-search input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    font-weight: 600;
+    color: #111827;
+}
+
+.pyq-search input::placeholder {
+    color: #9ca3af;
+    font-weight: 500;
+}
+
+.pyq-search button {
+    border: none;
+    background: #e5e7eb;
+    color: #374151;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 6px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.pyq-search button:hover {
+    background: #d1d5db;
+}
+
+
+
+/* =======================
+   PAGINATION STYLES
+======================= */
+
+.pyq-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 30px 0 10px;
+    flex-wrap: wrap;
+}
+
+.pyq-pagination button {
+    min-width: 38px;
+    height: 38px;
+    padding: 0 12px;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+    background: #ffffff;
+    color: #374151;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+/* Hover */
+.pyq-pagination button:hover:not(:disabled) {
+    background: #f3f4f6;
+    border-color: #2563eb;
+    color: #2563eb;
+}
+
+/* Active Page */
+.pyq-pagination button.active {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    color: #ffffff;
+    border-color: #2563eb;
+    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.3);
+    transform: translateY(-1px);
+}
+
+/* Disabled buttons */
+.pyq-pagination button:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+/* Prev / Next special styling */
+.pyq-pagination button:first-child,
+.pyq-pagination button:last-child {
+    font-weight: 600;
+    padding: 0 14px;
+}
+
+/* Mobile Friendly */
+@media (max-width: 600px) {
+    .pyq-pagination {
+        gap: 6px;
+    }
+
+    .pyq-pagination button {
+        min-width: 34px;
+        height: 34px;
+        font-size: 13px;
+        padding: 0 10px;
+    }
+}
+
+
+
+
+/* =========================
+   PYQ INFO BANNER
+========================= */
+
+.pyq-info-banner {
+    width: 100%;
+    background: linear-gradient(135deg, #1e3a8a, #2563eb);
+    padding: 50px 6%;
+    margin-top: 90px;
+    color: #ffffff;
+}
+
+.pyq-info-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+/* LEFT */
+.pyq-info-left {
+    max-width: 650px;
+}
+
+.pyq-tag {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.pyq-info-left h2 {
+    font-size: 34px;
+    font-weight: 800;
+    margin: 10px 0;
+}
+
+.pyq-info-left p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #e0e7ff;
+}
+
+/* STATS */
+.pyq-info-stats {
+    display: flex;
+    gap: 30px;
+    margin-top: 22px;
+}
+
+.pyq-info-stats div {
+    display: flex;
+    flex-direction: column;
+}
+
+.pyq-info-stats strong {
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.pyq-info-stats span {
+    font-size: 14px;
+    color: #c7d2fe;
+}
+
+/* RIGHT ICONS */
+.pyq-info-right {
+    display: flex;
+    gap: 18px;
+}
+
+.pyq-icon-box {
+    width: 70px;
+    height: 70px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .pyq-info-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .pyq-info-stats {
+        justify-content: center;
     }
 }

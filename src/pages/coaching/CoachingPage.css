@@ -1,0 +1,127 @@
+/* HERO */
+.coaching-hero {
+    background: linear-gradient(135deg, #7c3aed, #2563eb);
+    color: #fff;
+    padding: 90px 8%;
+    text-align: center;
+}
+
+.coaching-hero h1 {
+    font-size: 42px;
+    font-weight: 900;
+}
+
+.coaching-hero p {
+    margin-top: 14px;
+    font-size: 18px;
+    opacity: 0.95;
+}
+
+/* CONTAINER */
+.coaching-container {
+    padding: 70px 8%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 28px;
+    background: #f6f8fa;
+}
+
+/* CARD */
+.coaching-card {
+    background: #fff;
+    padding: 28px;
+    border-radius: 18px;
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.08);
+    position: relative;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.coaching-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 22px 55px rgba(0, 0, 0, 0.14);
+}
+
+/* TAG */
+.coaching-tag {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 800;
+    border-radius: 20px;
+    color: #fff;
+}
+
+.coaching-tag.toprated {
+    background: #22c55e;
+}
+
+.coaching-tag.popular {
+    background: #0ea5e9;
+}
+
+.coaching-tag.premium {
+    background: #f97316;
+}
+
+/* CONTENT */
+.coaching-card h3 {
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 6px;
+}
+
+.coaching-mode {
+    font-size: 14px;
+    color: #2563eb;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.coaching-desc {
+    font-size: 14px;
+    color: #6b7280;
+    margin-bottom: 18px;
+}
+
+.coaching-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    font-weight: 700;
+    color: #374151;
+    margin-bottom: 12px;
+}
+
+.coaching-batch {
+    font-size: 14px;
+    font-weight: 700;
+    color: #7c3aed;
+    margin-bottom: 18px;
+}
+
+/* BUTTON */
+.coaching-btn {
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    border: none;
+    background: linear-gradient(135deg, #7c3aed, #2563eb);
+    color: #fff;
+    font-weight: 800;
+    font-size: 15px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.coaching-btn:hover {
+    opacity: 0.9;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .coaching-hero h1 {
+        font-size: 32px;
+    }
+}

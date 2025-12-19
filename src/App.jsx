@@ -12,6 +12,9 @@ import MainPage from './pages/home/MainPage'
 import PYPPage from './pages/pyq/PYPPage'
 import PyqListPage from './pages/pyq/PyqListPage'
 import PyqPage from './pages/pyq/PyqPage'
+import ScrollToTop from "./components/ScrollToTop";
+import CoursePage from './pages/courses/CoursePage'
+import CoachingPage from './pages/coaching/CoachingPage'
 
 
 
@@ -22,7 +25,9 @@ export default function App() {
 
 
       <main className="container">
+        <ScrollToTop />
         <Routes>
+
           {/* <Route path="/" element={<HomePage />} /> */}
           <Route path="/" element={<MainPage />} />
           <Route path="/okk" element={<Header />} />
@@ -35,6 +40,8 @@ export default function App() {
           <Route path="/attempt/leaderboard/:mockTestId/:limit" element={<LeaderboardPage />} />
           {/* <Route path="/pyq/subcategory/:subCategoryId" element={<PyqListPage />} /> */}
           <Route path="/pyq/subcategory/:subCategoryId" element={<PyqPage />} />
+          <Route path="/courses" element={<CoursePage />} />
+          <Route path="/coaching" element={<CoachingPage />} />
           {/* <Route path="/mocktest/:mockTestId/start/:attemptId?" element={<StartAttemptPage />} />
           <Route path="/attempt/:attemptId/result" element={<ResultPage />} />
           <Route path="/leaderboard/:mockTestId" element={<LeaderboardPage />} />
