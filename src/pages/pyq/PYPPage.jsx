@@ -28,6 +28,40 @@ export default function PYPPage() {
         });
     }, []);
 
+
+    function FAQItem({ question, answer }) {
+        const [open, setOpen] = useState(false);
+
+        return (
+            <motion.div
+                className={`faq-item ${open ? "open" : ""}`}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3 }}
+            >
+                <div className="faq-question" onClick={() => setOpen(!open)}>
+                    <span>{question}</span>
+                    <span className="faq-icon">{open ? "−" : "+"}</span>
+                </div>
+
+                {open && (
+                    <motion.div
+                        className="faq-answer"
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        transition={{ duration: 0.3 }}
+                    >
+                        {answer}
+                    </motion.div>
+                )}
+            </motion.div>
+        );
+    }
+
+
+
+
     return (
         <>
             <Header />
@@ -108,7 +142,44 @@ export default function PYPPage() {
                         </div>
                     </div>
                 </section>
+
+                {/* FAQs SECTION */}
+                {/* FAQs SECTION */}
+                <section className="pyp-faq-section">
+                    <h2 className="faq-title">FAQs</h2>
+
+                    <div className="faq-container">
+                        {[
+                            {
+                                q: "What are Previous Year Question Papers (PYQs)?",
+                                a: "PYQs are actual question papers asked in previous government exams. Practicing them helps you understand real exam patterns, difficulty level, and important topics.",
+                            },
+                            {
+                                q: "Which exams' PYQs are available on this platform?",
+                                a: "We provide PYQs for major government exams including SSC, Banking, Railways, Defence, UPSC, and various State-level exams. More exams are added regularly.",
+                            },
+                            {
+                                q: "How will solving PYQs help in exam preparation?",
+                                a: "Solving PYQs improves accuracy, boosts confidence, highlights frequently asked topics, and helps you manage time effectively in real exams.",
+                            },
+                            {
+                                q: "Can I filter PYQs by year, exam stage, or subject?",
+                                a: "Yes, you can easily filter PYQs by exam category, subcategory, exam stage (Prelims/Mains), and year for focused and smart preparation.",
+                            },
+                            {
+                                q: "Are PYQs available in both English and Hindi?",
+                                a: "Most PYQs are available in both English and Hindi. Language availability may vary depending on the exam and year.",
+                            },
+                        ].map((item, index) => (
+                            <FAQItem key={index} question={item.q} answer={item.a} />
+                        ))}
+                    </div>
+                </section>
+
+
+
             </div>
+
 
             <Footer />
         </>
