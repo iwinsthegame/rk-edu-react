@@ -10,17 +10,13 @@ export default function PYPPage() {
     const [popularExams, setPopularExams] = useState([]);
     const [categories, setCategories] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState(null);
+    const [searchText, setSearchText] = useState("");
     const navigate = useNavigate();
 
     useEffect(() => {
-        // Fetch popular exams PYQs
-        user_api.get("/pyq").then((res) => {
-            setPopularExams(res.data || []);
-        });
-
-        // Fetch exam categories
         user_api.get("/exam-category").then((res) => {
             const data = res.data || [];
+            setPopularExams(data);
             setCategories(data);
             if (data.length > 0) {
                 setSelectedCategory(data[0]);
@@ -28,6 +24,29 @@ export default function PYPPage() {
         });
     }, []);
 
+    /* 🔍 SEARCH ACROSS ALL CATEGORIES + SUBCATEGORIES */
+    const searchedResults = searchText
+        ? categories
+            .map((cat) => {
+                const categoryMatch = cat.name
+                    .toLowerCase()
+                    .includes(searchText.toLowerCase());
+
+                const matchedSubs = cat.subCategories?.filter((sub) =>
+                    sub.name.toLowerCase().includes(searchText.toLowerCase())
+                );
+
+                return categoryMatch || matchedSubs?.length
+                    ? {
+                        ...cat,
+                        subCategories: categoryMatch
+                            ? cat.subCategories
+                            : matchedSubs,
+                    }
+                    : null;
+            })
+            .filter(Boolean)
+        : [];
 
     function FAQItem({ question, answer }) {
         const [open, setOpen] = useState(false);
@@ -59,9 +78,6 @@ export default function PYPPage() {
         );
     }
 
-
-
-
     return (
         <>
             <Header />
@@ -72,6 +88,115 @@ export default function PYPPage() {
                     <h1>Previous Year Question Papers (PYQs)</h1>
                     <p>Practice real exam papers and boost your exam readiness</p>
                 </div>
+
+
+
+                {/* EXPLORE ALL EXAMS */}
+                <section className="pyp-section">
+                    <h2>Complete Previous Year Paper for All Exams</h2>
+
+                    {/* SEARCH BOX */}
+                    <div className="explore-search">
+                        <input
+                            type="text"
+                            placeholder="Search exam, stage or paper..."
+                            value={searchText}
+                            onChange={(e) => setSearchText(e.target.value)}
+                        />
+                    </div>
+
+                    {/* SEARCH RESULTS */}
+                    {searchText ? (
+                        <div className="search-results">
+                            {searchedResults.length > 0 ? (
+                                searchedResults.map((cat) => (
+                                    <div key={cat.id} className="search-category">
+                                        <h4>{cat.name}</h4>
+
+                                        <div className="subcategory-grid">
+                                            {cat.subCategories.map((sub) => (
+                                                <motion.div
+                                                    key={sub.id}
+                                                    className="subcategory-card"
+                                                    whileHover={{
+                                                        y: -6,
+                                                        scale: 1.03,
+                                                    }}
+                                                    whileTap={{ scale: 0.97 }}
+                                                    onClick={() =>
+                                                        navigate(
+                                                            `/pyq/subcategory/${sub.id}`
+                                                        )
+                                                    }
+                                                >
+                                                    <h4>{sub.name}</h4>
+                                                    <p>Previous Year Papers</p>
+                                                </motion.div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                ))
+                            ) : (
+                                <p className="no-result">
+                                    No matching PYQs found
+                                </p>
+                            )}
+                        </div>
+                    ) : (
+                        <div className="explore-layout">
+                            {/* LEFT CATEGORY */}
+                            <div className="category-list">
+                                {categories.map((cat) => (
+                                    <div
+                                        key={cat.id}
+                                        className={`category-item ${selectedCategory?.id === cat.id
+                                            ? "active"
+                                            : ""
+                                            }`}
+                                        onClick={() =>
+                                            setSelectedCategory(cat)
+                                        }
+                                    >
+                                        {cat.name}
+                                    </div>
+                                ))}
+                            </div>
+
+                            {/* RIGHT SUBCATEGORY */}
+                            <div className="subcategory-grid">
+                                {selectedCategory?.subCategories?.length >
+                                    0 ? (
+                                    selectedCategory.subCategories.map(
+                                        (sub) => (
+                                            <motion.div
+                                                key={sub.id}
+                                                className="subcategory-card"
+                                                whileHover={{
+                                                    y: -6,
+                                                    scale: 1.03,
+                                                }}
+                                                whileTap={{ scale: 0.97 }}
+                                                onClick={() =>
+                                                    navigate(
+                                                        `/pyq/subcategory/${sub.id}`
+                                                    )
+                                                }
+                                            >
+                                                <h4>{sub.name}</h4>
+                                                <p>Previous Year Papers</p>
+                                            </motion.div>
+                                        )
+                                    )
+                                ) : (
+                                    <p style={{ color: "#666" }}>
+                                        No subcategories available
+                                    </p>
+                                )}
+                            </div>
+                        </div>
+                    )}
+                </section>
+
 
                 {/* POPULAR EXAMS */}
                 <section className="pyp-section">
@@ -87,64 +212,26 @@ export default function PYPPage() {
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.35 }}
-                                onClick={() =>
-                                    navigate(`/pyq/exam/${exam.id}`)
-                                }
+                                onClick={() => navigate(`/pyq/exam/${exam.id}`)}
                             >
-                                <h3>{exam.examName}</h3>
+                                <img
+                                    src={
+                                        exam.logoUrl
+                                            ? `http://localhost:8080${exam.logoUrl}`
+                                            : "/default-exam.png"
+                                    }
+                                    alt={exam.name}
+                                    className="exam-logo"
+                                />
+                                <h3 className="exam-title">{exam.name}</h3>
                             </motion.div>
                         ))}
                     </div>
                 </section>
 
-                {/* EXPLORE ALL EXAMS */}
-                <section className="pyp-section">
-                    <h2>Complete Previous Year Paper for All Exams</h2>
 
-                    <div className="explore-layout">
-                        {/* LEFT CATEGORY */}
-                        <div className="category-list">
-                            {categories.map((cat) => (
-                                <div
-                                    key={cat.id}
-                                    className={`category-item ${selectedCategory?.id === cat.id ? "active" : ""
-                                        }`}
-                                    onClick={() => setSelectedCategory(cat)}
-                                >
-                                    {cat.name}
-                                </div>
-                            ))}
-                        </div>
 
-                        {/* RIGHT SUBCATEGORY */}
-                        <div className="subcategory-grid">
-                            {selectedCategory?.subCategories?.length > 0 ? (
-                                selectedCategory.subCategories.map((sub) => (
-                                    <motion.div
-                                        key={sub.id}
-                                        className="subcategory-card"
-                                        whileHover={{ y: -6, scale: 1.03 }}
-                                        whileTap={{ scale: 0.97 }}
-                                        initial={{ opacity: 0, scale: 0.95 }}
-                                        animate={{ opacity: 1, scale: 1 }}
-                                        transition={{ duration: 0.3 }}
-                                        onClick={() =>
-                                            navigate(`/pyq/subcategory/${sub.id}`)
-                                        }
-                                    >
-                                        <h4>{sub.name}</h4>
-                                        <p>Previous Year Papers</p>
-                                    </motion.div>
-                                ))
-                            ) : (
-                                <p style={{ color: "#666" }}>No subcategories available</p>
-                            )}
-                        </div>
-                    </div>
-                </section>
-
-                {/* FAQs SECTION */}
-                {/* FAQs SECTION */}
+                {/* FAQs */}
                 <section className="pyp-faq-section">
                     <h2 className="faq-title">FAQs</h2>
 
@@ -152,34 +239,55 @@ export default function PYPPage() {
                         {[
                             {
                                 q: "What are Previous Year Question Papers (PYQs)?",
-                                a: "PYQs are actual question papers asked in previous government exams. Practicing them helps you understand real exam patterns, difficulty level, and important topics.",
+                                a: "PYQs are actual question papers asked in previous government exams."
                             },
                             {
                                 q: "Which exams' PYQs are available on this platform?",
-                                a: "We provide PYQs for major government exams including SSC, Banking, Railways, Defence, UPSC, and various State-level exams. More exams are added regularly.",
+                                a: "PYQs are available for SSC, Banking, Railways, Defence, UPSC, and State-level exams."
                             },
                             {
-                                q: "How will solving PYQs help in exam preparation?",
-                                a: "Solving PYQs improves accuracy, boosts confidence, highlights frequently asked topics, and helps you manage time effectively in real exams.",
+                                q: "How do PYQs help in exam preparation?",
+                                a: "PYQs help you understand exam patterns, frequently asked topics, and difficulty level."
                             },
                             {
-                                q: "Can I filter PYQs by year, exam stage, or subject?",
-                                a: "Yes, you can easily filter PYQs by exam category, subcategory, exam stage (Prelims/Mains), and year for focused and smart preparation.",
+                                q: "Are PYQs available exam-wise and year-wise?",
+                                a: "Yes, you can filter PYQs by exam, stage, and year for focused practice."
                             },
                             {
-                                q: "Are PYQs available in both English and Hindi?",
-                                a: "Most PYQs are available in both English and Hindi. Language availability may vary depending on the exam and year.",
+                                q: "Can I download PYQ PDFs?",
+                                a: "Yes, PYQs are available in downloadable PDF format for offline practice."
                             },
-                        ].map((item, index) => (
-                            <FAQItem key={index} question={item.q} answer={item.a} />
-                        ))}
+                            {
+                                q: "Are PYQs available for different exam stages like Prelims and Mains?",
+                                a: "Yes, PYQs are organized by exam stages such as Prelims, Mains, Tier 1, and Tier 2."
+                            },
+                            {
+                                q: "Do PYQs include real exam-level questions?",
+                                a: "Yes, all PYQs are taken from actual exams conducted in previous years."
+                            },
+                            {
+                                q: "How often are new PYQs added?",
+                                a: "New PYQs are added regularly after each major government exam."
+                            },
+                            {
+                                q: "Can beginners start preparation using PYQs?",
+                                a: "Yes, PYQs are highly recommended for beginners to understand exam trends early."
+                            },
+                            {
+                                q: "Are PYQs available for free?",
+                                a: "Many PYQs are free, while some premium papers may require access."
+                            }
+                        ]
+                            .map((item, index) => (
+                                <FAQItem
+                                    key={index}
+                                    question={item.q}
+                                    answer={item.a}
+                                />
+                            ))}
                     </div>
                 </section>
-
-
-
             </div>
-
 
             <Footer />
         </>
