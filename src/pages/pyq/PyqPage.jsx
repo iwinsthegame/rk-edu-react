@@ -4,6 +4,7 @@ import { user_api } from "../../api/axiosClient";
 import { useParams } from "react-router-dom";
 import Header from "../home/Header";
 import Footer from "../home/Footer";
+import PricingModal from "../pricing/PricingModal";
 
 const ITEMS_PER_PAGE = 5;
 
@@ -16,6 +17,7 @@ export default function PyqPage() {
     const [stage, setStage] = useState([]);
     const [search, setSearch] = useState("");
     const [page, setPage] = useState(1);
+    const [openPricing, setOpenPricing] = useState(false);
 
     useEffect(() => {
         user_api.get(`/pyq/subcategory/${subCategoryId}`).then((res) => {
@@ -138,7 +140,7 @@ export default function PyqPage() {
                         <div className="pyq-loading">Loading...</div>
                     ) : (
                         paginatedData.map((p, i) => (
-                            <PyqCard key={p.id} pyq={p} index={i} />
+                            <PyqCard key={p.id} pyq={p} index={i} onUnlock={() => setOpenPricing(true)} />
                         ))
                     )}
 
@@ -208,6 +210,11 @@ export default function PyqPage() {
                 </div>
             </div>
 
+            {/* ✅ SINGLE PRICING MODAL */}
+            <PricingModal
+                open={openPricing}
+                onClose={() => setOpenPricing(false)}
+            />
             <Footer />
         </>
     );
@@ -215,7 +222,7 @@ export default function PyqPage() {
 
 /* ---------- CARD ---------- */
 
-function PyqCard({ pyq, index }) {
+function PyqCard({ pyq, index, onUnlock }) {
     const isFree = index === 0;
 
     return (
@@ -250,7 +257,7 @@ function PyqCard({ pyq, index }) {
                 {isFree ? (
                     <button className="btn-solid">Start Now</button>
                 ) : (
-                    <button className="btn-lock">🔒 Unlock Now</button>
+                    <button className="btn-lock" onClick={onUnlock}>🔒 Unlock Now</button>
                 )}
             </div>
         </div>

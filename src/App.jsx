@@ -15,6 +15,7 @@ import PyqPage from './pages/pyq/PyqPage'
 import ScrollToTop from "./components/ScrollToTop";
 import CoursePage from './pages/courses/CoursePage'
 import CoachingPage from './pages/coaching/CoachingPage'
+import PricingPage from './pages/pricing/PricingPage'
 
 
 
@@ -42,6 +43,7 @@ export default function App() {
           <Route path="/pyq/subcategory/:subCategoryId" element={<PyqPage />} />
           <Route path="/courses" element={<CoursePage />} />
           <Route path="/coaching" element={<CoachingPage />} />
+          <Route path="/pricing" element={<PricingPage />} />
           {/* <Route path="/mocktest/:mockTestId/start/:attemptId?" element={<StartAttemptPage />} />
           <Route path="/attempt/:attemptId/result" element={<ResultPage />} />
           <Route path="/leaderboard/:mockTestId" element={<LeaderboardPage />} />

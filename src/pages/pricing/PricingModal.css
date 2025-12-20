@@ -1,0 +1,45 @@
+.pricing-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pricing-modal-content {
+    background: #fff;
+    width: 92%;
+    max-width: 1200px;
+    height: 90vh;
+    overflow-y: auto;
+    border-radius: 18px;
+    position: relative;
+    animation: scaleUp 0.3s ease;
+}
+
+.modal-close {
+    position: absolute;
+    top: 14px;
+    right: 18px;
+    background: #111;
+    color: #fff;
+    border: none;
+    font-size: 18px;
+    padding: 6px 10px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+@keyframes scaleUp {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}

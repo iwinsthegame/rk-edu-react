@@ -1,0 +1,164 @@
+/* HERO */
+.pricing-hero {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    color: #fff;
+    padding: 90px 8%;
+    text-align: center;
+}
+
+.pricing-hero h1 {
+    font-size: 42px;
+    font-weight: 900;
+}
+
+.pricing-hero p {
+    margin-top: 12px;
+    font-size: 18px;
+    opacity: 0.95;
+}
+
+/* CONTAINER */
+.pricing-container {
+    background: #f6f8fa;
+    width: 90%;
+    max-width: 1200px;
+    max-height: 90vh;
+
+    padding: 40px 4%;
+    border-radius: 18px;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 26px;
+
+    overflow: hidden;
+    /* 🚫 disable scroll inside */
+}
+
+/* CARD */
+.pricing-card {
+    background: #fff;
+    border-radius: 22px;
+    padding: 28px 26px;
+    position: relative;
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.08);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.pricing-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.14);
+}
+
+/* POPULAR */
+.pricing-card.popular {
+    border: 3px solid #8b5cf6;
+    transform: scale(1.04);
+}
+
+.popular-badge {
+    position: absolute;
+    top: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #8b5cf6;
+    color: #fff;
+    padding: 8px 20px;
+    font-size: 13px;
+    font-weight: 800;
+    border-radius: 20px;
+}
+
+/* DISCOUNT */
+.discount-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: #eef2ff;
+    color: #4338ca;
+    padding: 6px 12px;
+    border-radius: 14px;
+    font-weight: 800;
+    font-size: 12px;
+}
+
+/* TEXT */
+.pricing-card h3 {
+    font-size: 24px;
+    font-weight: 900;
+    margin-bottom: 6px;
+}
+
+.plan-desc {
+    color: #6b7280;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+/* PRICE */
+.price {
+    font-size: 44px;
+    font-weight: 900;
+    margin-bottom: 6px;
+}
+
+.price span {
+    font-size: 16px;
+    color: #6b7280;
+    font-weight: 700;
+}
+
+.extra {
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+/* BUTTON */
+.choose-btn {
+    width: 100%;
+    padding: 14px;
+    border-radius: 14px;
+    border: 2px solid #8b5cf6;
+    background: transparent;
+    color: #8b5cf6;
+    font-weight: 800;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.pricing-card.popular .choose-btn {
+    background: #8b5cf6;
+    color: #fff;
+}
+
+.choose-btn:hover {
+    opacity: 0.9;
+}
+
+/* DIVIDER */
+.divider {
+    height: 1px;
+    background: #e5e7eb;
+    margin: 26px 0;
+}
+
+/* FEATURES */
+.feature-list {
+    list-style: none;
+    padding: 0;
+}
+
+.feature-list li {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #374151;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .pricing-hero h1 {
+        font-size: 32px;
+    }
+}
