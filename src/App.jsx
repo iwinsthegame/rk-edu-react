@@ -16,6 +16,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import CoursePage from './pages/courses/CoursePage'
 import CoachingPage from './pages/coaching/CoachingPage'
 import PricingPage from './pages/pricing/PricingPage'
+import WhatsappButton from './components/watsapp/WhatsappButton'
 
 
 
@@ -51,6 +52,7 @@ export default function App() {
           <Route path="/analytics/:attemptId" element={<AnalyticsPage />} />
           <Route path="/login" element={<LoginPage />} />  */}
         </Routes>
+        <WhatsappButton />
       </main>
 
 

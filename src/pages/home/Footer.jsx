@@ -43,7 +43,7 @@ export default function Footer() {
                     <h3>Contact</h3>
                     <ul>
                         <li>Email: support@rk-prepmaster.com</li>
-                        <li>Phone: +91 9115262451</li>
+                        <li>Phone: +91 9229109013</li>
                         <li>Location: India</li>
                     </ul>
                 </div>
