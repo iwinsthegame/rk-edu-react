@@ -3,6 +3,7 @@ import "../../styles/HomePage.css";
 import { FiBookOpen, FiPlayCircle, FiUsers, FiAward } from "react-icons/fi";
 import { FiChevronRight } from "react-icons/fi";
 import { user_api } from "../../api/axiosClient";
+import { Link } from "react-router-dom";
 
 export default function HomePage() {
 
@@ -54,8 +55,13 @@ export default function HomePage() {
                         AI-powered mock tests, real-time leaderboards, and deep analytics to boost your score.
                     </p>
                     <div className="hp-hero-buttons">
-                        <button className="btn-primary">Start Learning</button>
-                        <button className="btn-outline">Explore Courses</button>
+                        <Link to="/courses" className="btn-primary">
+                            Start Learning
+                        </Link>
+
+                        <Link to="/pyppage" className="btn-pyq">
+                            Explore PYQs
+                        </Link>
                     </div>
                 </div>
 
@@ -125,11 +131,6 @@ export default function HomePage() {
 
 
 
-
-
-
-
-            {/* 📚 FEATURED COURSES */}
             {/* 📚 FEATURED COURSES */}
             <section className="hp-section">
                 <h2 className="section-title">Featured Courses</h2>
@@ -185,38 +186,71 @@ export default function HomePage() {
 
 
 
+
             {/* 🌟 TESTIMONIALS */}
             <section className="hp-section">
                 <h2 className="section-title">What Students Say</h2>
 
                 <div className="hp-testimonials">
-                    {[1, 2, 3].map((t) => (
-                        <div key={t} className="testimonial-card">
-                            <div className="testimonial-header">
-                                <img
-                                    src="https://i.pravatar.cc/80?img=12"
-                                    alt="Student"
-                                    className="testimonial-avatar"
-                                />
-
-                                <div>
-                                    <h4>Rohit Kumar</h4>
-                                    <span>SSC Aspirant</span>
-                                </div>
-                            </div>
-
-                            <p className="testimonial-text">
-                                “This platform helped me boost my score by 42% in just 1 month!
-                                The analytics and leaderboard are game-changing.”
-                            </p>
-
-                            <div className="testimonial-rating">
-                                ⭐ ⭐ ⭐ ⭐ ⭐
+                    {/* Testimonial 1 */}
+                    <div className="testimonial-card">
+                        <div className="testimonial-header">
+                            <img
+                                src="https://i.pravatar.cc/80?img=12"
+                                alt="Student"
+                                className="testimonial-avatar"
+                            />
+                            <div>
+                                <h4>Rohit Kumar</h4>
+                                <span>SSC Aspirant</span>
                             </div>
                         </div>
-                    ))}
+                        <p className="testimonial-text">
+                            “This platform helped me boost my score by 42% in just 1 month! The analytics and leaderboard are game-changing.”
+                        </p>
+                        <div className="testimonial-rating">⭐ ⭐ ⭐ ⭐ ⭐</div>
+                    </div>
+
+                    {/* Testimonial 2 */}
+                    <div className="testimonial-card">
+                        <div className="testimonial-header">
+                            <img
+                                src="https://i.pravatar.cc/80?img=34"
+                                alt="Student"
+                                className="testimonial-avatar"
+                            />
+                            <div>
+                                <h4>Priya Sharma</h4>
+                                <span>Bank Exam Aspirant</span>
+                            </div>
+                        </div>
+                        <p className="testimonial-text">
+                            “The PYQs and mock tests are incredibly helpful. I felt more confident and focused while preparing for my exams.”
+                        </p>
+                        <div className="testimonial-rating">⭐ ⭐ ⭐ ⭐ ⭐</div>
+                    </div>
+
+                    {/* Testimonial 3 */}
+                    <div className="testimonial-card">
+                        <div className="testimonial-header">
+                            <img
+                                src="https://i.pravatar.cc/80?img=56"
+                                alt="Student"
+                                className="testimonial-avatar"
+                            />
+                            <div>
+                                <h4>Ankit Verma</h4>
+                                <span>Railway Exam Aspirant</span>
+                            </div>
+                        </div>
+                        <p className="testimonial-text">
+                            “I loved the detailed explanations and the leaderboard feature. It motivated me to practice consistently every day.”
+                        </p>
+                        <div className="testimonial-rating">⭐ ⭐ ⭐ ⭐ ⭐</div>
+                    </div>
                 </div>
             </section>
+
 
 
         </div>

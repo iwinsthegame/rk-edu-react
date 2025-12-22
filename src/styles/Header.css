@@ -236,3 +236,29 @@
         font-size: 14px;
     }
 }
+
+
+
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.video-call-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border-radius: 50%;
+    background-color: #1a73e8;
+    margin-right: 10px;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.video-call-btn:hover {
+    background-color: #1669c1;
+}

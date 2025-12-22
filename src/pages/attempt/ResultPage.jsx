@@ -16,7 +16,7 @@ export default function ResultPage() {
     useEffect(() => {
         if (!attemptId) return;
         user_api
-            .get(`/attempt/${attemptId}/result/1`)
+            .get(`/attempt/${attemptId}/result/2`)
             .then((res) => {
                 setResult(res.data);
                 setLoading(false);

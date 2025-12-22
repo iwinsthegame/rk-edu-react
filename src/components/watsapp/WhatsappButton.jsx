@@ -1,5 +1,7 @@
 import React from "react";
 import "./WhatsappButton.css";
+import "@fortawesome/fontawesome-free/css/all.min.css";
+
 
 export default function WhatsappButton() {
     const phoneNumber = "9229109013";
@@ -14,7 +16,7 @@ export default function WhatsappButton() {
             target="_blank"
             rel="noreferrer"
         >
-            <span className="whatsapp-icon">💬</span>
+            <span className="whatsapp-icon"><i className="fa-brands fa-whatsapp"></i></span>
         </a>
     );
 }

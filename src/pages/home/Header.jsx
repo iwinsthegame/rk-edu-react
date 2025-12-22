@@ -3,6 +3,7 @@ import "../../styles/Header.css";
 import { examCategories, examList } from "./examData";
 import HomePage from "./HomePage";
 import { Link, useParams, useNavigate } from 'react-router-dom'
+import { FiVideo } from "react-icons/fi";
 
 
 export default function Header() {
@@ -122,6 +123,9 @@ export default function Header() {
 
                 </nav>
                 {/* RIGHT SIDE */}
+                <Link to="/videocall" className="video-call-btn" title="Video Call">
+                    <FiVideo size={22} />
+                </Link>
                 <a className="tb-nav-item hd-start-btn">Let's Start</a>
             </header>
         </div>
