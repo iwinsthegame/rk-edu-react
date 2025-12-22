@@ -65,7 +65,7 @@ export default function PricingPage() {
             const order = await res.json();
 
             const options = {
-                key: "RAZORPAY_KEY_ID", // 🔑 replace
+                key: "rzp_test_RuN6bp4O2XRGoR", // 🔑 replace
                 amount: order.amount * 100,
                 currency: "INR",
                 name: "RK Edu",

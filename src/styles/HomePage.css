@@ -185,18 +185,46 @@
     cursor: pointer;
 }
 
+/* Primary button */
 .btn-primary {
-    background: #fff;
-    color: #2575fc;
+    background-color: #b1439fa8;
+    /* blue */
+    color: white;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 16px;
+    text-decoration: none;
+    display: inline-block;
     font-weight: 600;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: background-color 0.3s ease;
 }
 
-.btn-outline {
-    background: #fff;
-    border: 2px solid rgb(113, 143, 16);
-    color: rgb(57, 119, 155);
-    font-weight: 600;
+.btn-primary:hover {
+    background-color: #1669c1;
 }
+
+/* Secondary / PYQ button */
+.btn-pyq {
+    background-color: #2ee28556;
+    color: white;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 16px;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: 600;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-pyq:hover {
+    background-color: #1a73e8;
+    color: white;
+}
+
 
 .hp-hero-art {
     position: relative;
