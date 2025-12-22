@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import mocktestService from "../../services/mocktest/mocktestService";
+import { useNavigate } from "react-router-dom";
 
 
 export default function useStartTest(mocktestIdParam) {
@@ -28,6 +29,7 @@ export default function useStartTest(mocktestIdParam) {
     const timerRef = useRef(null);
     const hasAutoSubmitted = useRef(false);
     const attemptStarted = useRef(false);
+    const navigate = useNavigate();
 
     // -------- helpers --------
     function getMocktestIdFromUrl() {
@@ -296,7 +298,8 @@ export default function useStartTest(mocktestIdParam) {
         try {
             await mocktestService.submitAttempt(attemptId);
             alert('Test submitted successfully!');
-            setTimeout(() => window.close(), 500);
+            navigate(`/attempt/${attemptId}/result/2`);
+            // setTimeout(() => window.close(), 500);
         } catch (err) {
             console.error('submit error', err);
             alert('Submission failed. Check console.');

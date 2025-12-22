@@ -202,7 +202,7 @@
 }
 
 .btn-primary:hover {
-    background-color: #1669c1;
+    background-color: #a31a8c99;
 }
 
 /* Secondary / PYQ button */
@@ -221,7 +221,7 @@
 }
 
 .btn-pyq:hover {
-    background-color: #1a73e8;
+    background-color: #42e28fba;
     color: white;
 }
 
