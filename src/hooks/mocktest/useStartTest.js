@@ -30,6 +30,8 @@ export default function useStartTest(mocktestIdParam) {
     const hasAutoSubmitted = useRef(false);
     const attemptStarted = useRef(false);
     const navigate = useNavigate();
+    const [user, setUser] = useState(null);
+
 
     // -------- helpers --------
     function getMocktestIdFromUrl() {
@@ -306,6 +308,27 @@ export default function useStartTest(mocktestIdParam) {
         }
     };
 
+
+
+    useEffect(() => {
+        let cancelled = false;
+
+        (async () => {
+            try {
+                const res = await mocktestService.getUserProfile();
+                if (!cancelled) {
+                    setUser(res?.data || res);
+                }
+            } catch (err) {
+                console.error("Failed to fetch user profile", err);
+            }
+        })();
+
+        return () => { cancelled = true; };
+    }, []);
+
+
+
     // expose values + handlers (names match StartTest.jsx)
     return {
         loading,
@@ -335,5 +358,7 @@ export default function useStartTest(mocktestIdParam) {
         submitTest,
         getPaletteState,
         markVisited,
+
+        user,
     };
 }

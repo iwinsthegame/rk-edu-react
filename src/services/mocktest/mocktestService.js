@@ -56,6 +56,10 @@ const mocktestService = {
 
     getInstructionsByMocktestId: async (mocktestId) => {
         return user_api.get(`/instructions/mocktest/${mocktestId}`);
+    },
+
+    getUserProfile: async () => {
+        return user_api.get("/2");
     }
 
 };
