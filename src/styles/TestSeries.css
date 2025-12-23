@@ -103,14 +103,31 @@
 }
 
 /* sidebar */
+
 .ts-sidebar {
+  position: sticky;
+  top: 80px;
+  /* header height */
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
   background: #fff;
-  border-radius: 10px;
-  padding: 12px 8px;
-  height: auto;
+  padding: 12px;
+  border-radius: 12px;
+
+  /* 👇 magic here */
+  max-height: calc((51px * 6) + (10px * 5) + 24px);
   overflow-y: auto;
-  box-shadow: 0 6px 18px rgba(9, 30, 66, 0.04);
+
+  scrollbar-width: thin;
+  /* Firefox */
 }
+
+
+
+
 
 .ts-sidebar-item {
   padding: 16px 18px;
