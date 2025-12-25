@@ -18,6 +18,14 @@ export default function AdminDashboard() {
             icon: "🧪",
             path: "/admin/mocktest/create"
         },
+
+        {
+            title: "Create Question",
+            desc: "Add questions to mock tests",
+            icon: "❓",
+            path: "/admin/questions/create"
+        },
+
         // {
         //     title: "Edit Test Series",
         //     desc: "Edit, publish or draft test series",
