@@ -22,6 +22,7 @@ import DiscussionPage from './pages/discussion/DiscussionPage'
 import AdminCreateTestSeries from './adminPage/AdminCreateTestSeries'
 import AdminCreateMockTest from './adminPage/AdminCreateMockTest'
 import AdminDashboard from './adminPage/AdminDashboard'
+import AdminCreateQuestions from './adminPage/AdminCreateQuestions'
 
 
 
@@ -40,6 +41,7 @@ export default function App() {
           <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/admin/testseries/create" element={<AdminCreateTestSeries />} />
           <Route path="/admin/mocktest/create" element={<AdminCreateMockTest />} />
+          <Route path="/admin/questions/create" element={<AdminCreateQuestions />} />
 
 
           <Route path="/" element={<MainPage />} />
