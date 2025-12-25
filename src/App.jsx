@@ -17,6 +17,9 @@ import CoursePage from './pages/courses/CoursePage'
 import CoachingPage from './pages/coaching/CoachingPage'
 import PricingPage from './pages/pricing/PricingPage'
 import WhatsappButton from './components/watsapp/WhatsappButton'
+import './App.css'
+import DiscussionPage from './pages/discussion/DiscussionPage'
+
 
 
 
@@ -30,7 +33,8 @@ export default function App() {
         <ScrollToTop />
         <Routes>
 
-          {/* <Route path="/" element={<HomePage />} /> */}
+
+
           <Route path="/" element={<MainPage />} />
           <Route path="/okk" element={<Header />} />
           <Route path="/testseries" element={<TestSeriesPage />} />
