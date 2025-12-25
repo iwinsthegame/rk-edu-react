@@ -1,0 +1,85 @@
+.admin-testseries-container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 30px;
+    font-family: Inter, sans-serif;
+}
+
+.ats-card {
+    background: linear-gradient(135deg, #ffffff, #f5f8ff);
+    padding: 18px;
+    border-radius: 14px;
+    margin-bottom: 18px;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+}
+
+.ats-input,
+.ats-select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+
+.ats-mock-card {
+    background: #fff;
+    padding: 16px;
+    border-radius: 12px;
+    margin-bottom: 14px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+    display: grid;
+    gap: 8px;
+}
+
+.ats-btn {
+    padding: 8px 14px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    background: #1976d2;
+    color: #fff;
+}
+
+.ats-btn-danger {
+    background: #d32f2f;
+}
+
+.ats-btn-move {
+    background: #455a64;
+}
+
+.ats-btn-preview {
+    background: #6a1b9a;
+}
+
+.ats-btn-save {
+    background: #1565c0;
+}
+
+.ats-btn-status.published {
+    background: #2e7d32;
+}
+
+.ats-btn-status.draft {
+    background: #f9a825;
+}
+
+.ats-row {
+    display: flex;
+    gap: 8px;
+}
+
+.ats-actions {
+    display: flex;
+    gap: 14px;
+    margin-top: 20px;
+}
+
+.ats-preview-mock {
+    background: #fff;
+    padding: 14px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.05);
+}
