@@ -35,7 +35,8 @@ export default function StartTest() {
     goToQuestion,
     submitTest,
     getPaletteState,
-    markVisited
+    markVisited,
+    user
   } = useStartTest(mocktestId);
 
   // ---------------- SAFE GUARDS (NO CRASH) ---------------- //
@@ -183,21 +184,37 @@ export default function StartTest() {
         <div className="st-right">
           <div className="candidate-card">
             <div className="candidate-left">
-              <div className="candidate-photo"></div>
+
+              <div className="candidate-photo">
+                <img
+                  src={
+                    user?.profileImage
+                      ? `http://localhost:8080${user.profileImage}`
+                      : "/assets/default-user.png"
+                  }
+                  alt="Profile"
+                />
+              </div>
 
               <div className="candidate-info">
                 <div className="info-row">
                   <span className="label">Candidate Name :</span>
-                  <span className="value name">Rohit Kumar</span>
+                  <span className="value name">
+                    {user?.fullName || "Loading..."}
+                  </span>
                 </div>
 
                 <div className="info-row">
                   <span className="label">Candidate ID :</span>
-                  <span className="value">251</span>
+                  <span className="value">
+                    {user?.id || "--"}
+                  </span>
                 </div>
               </div>
+
             </div>
           </div>
+
 
           {/* LEGEND */}
           <div className="legend-box">
@@ -237,6 +254,6 @@ export default function StartTest() {
           </div>
         </div>
       </div>
-    </div>
+    </div >
   );
 }

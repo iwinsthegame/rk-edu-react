@@ -170,5 +170,7 @@ function TestSeriesCard({ series }) {
         </div>
       </div>
     </article>
+
+
   );
 }

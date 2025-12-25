@@ -4,6 +4,7 @@ import Header from "../../pages/home/Header";
 import Footer from "../../pages/home/Footer";
 import { useMocktest } from "../../hooks/mocktest/useMocktest";
 import "../../styles/MockTests.css";
+import DiscussionPage from "../../pages/discussion/DiscussionPage";
 
 export default function MockTestsPage() {
   const { seriesId } = useParams();
@@ -64,6 +65,7 @@ export default function MockTestsPage() {
           ))}
         </div>
       </div>
+      <DiscussionPage entityType="TEST_SERIES" entityId={seriesId} />
 
       <Footer />
     </div>
