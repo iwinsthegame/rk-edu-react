@@ -121,6 +121,10 @@ export default function Header() {
                         Coaching
                     </Link>
 
+                    <Link to={`/admin`} className="tb-nav-item">
+                        Admin
+                    </Link>
+
                 </nav>
                 {/* RIGHT SIDE */}
                 <Link to="/videocall" className="video-call-btn" title="Video Call">

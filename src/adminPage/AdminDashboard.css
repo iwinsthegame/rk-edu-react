@@ -1,0 +1,64 @@
+.admin-dashboard {
+    padding: 40px;
+    background: linear-gradient(135deg, #f5f7fb, #eef2f7);
+    min-height: 100vh;
+    font-family: Inter, sans-serif;
+}
+
+.admin-header {
+    margin-bottom: 30px;
+}
+
+.admin-header h1 {
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.admin-header p {
+    color: #555;
+    margin-top: 6px;
+}
+
+.admin-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+.admin-card {
+    background: #fff;
+    padding: 22px;
+    border-radius: 16px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+    transition: all 0.25s ease;
+    position: relative;
+}
+
+.admin-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 36px rgba(0, 0, 0, 0.12);
+}
+
+.admin-card .icon {
+    font-size: 34px;
+    margin-bottom: 12px;
+}
+
+.admin-card h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.admin-card p {
+    font-size: 14px;
+    color: #666;
+    margin: 8px 0 18px;
+}
+
+.admin-card .action {
+    font-size: 14px;
+    color: #1976d2;
+    font-weight: 600;
+}
