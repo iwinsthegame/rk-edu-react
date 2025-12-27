@@ -1,0 +1,82 @@
+.admin-layout {
+    display: flex;
+    min-height: calc(100vh - 70px);
+    background: #f1f5f9;
+}
+
+/* Sidebar */
+.admin-sidebar {
+    width: 260px;
+    background: linear-gradient(180deg, #0f172a, #27315c);
+    color: #fff;
+    padding-top: 70px;
+    padding-right: 30px;
+
+    padding-left: 20px;
+    transition: width 0.3s ease;
+}
+
+.admin-sidebar.collapsed {
+    width: 80px;
+}
+
+/* Header */
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.collapse-btn {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #fff;
+}
+
+/* Menu */
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #cbd5f5;
+    transition: 0.3s;
+}
+
+.menu-item:hover {
+    background: #1e293b;
+    color: #fff;
+}
+
+.menu-item.active {
+    background: #2563eb;
+    color: #fff;
+    font-weight: 600;
+}
+
+.menu-icon {
+    font-size: 20px;
+    min-width: 24px;
+}
+
+.menu-text {
+    white-space: nowrap;
+}
+
+/* Right content */
+.admin-content {
+    flex: 1;
+    padding: 30px;
+    overflow-y: auto;
+}

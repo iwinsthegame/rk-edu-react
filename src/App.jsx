@@ -18,11 +18,15 @@ import CoachingPage from './pages/coaching/CoachingPage'
 import PricingPage from './pages/pricing/PricingPage'
 import WhatsappButton from './components/watsapp/WhatsappButton'
 import './App.css'
-import DiscussionPage from './pages/discussion/DiscussionPage'
-import AdminCreateTestSeries from './adminPage/AdminCreateTestSeries'
-import AdminCreateMockTest from './adminPage/AdminCreateMockTest'
-import AdminDashboard from './adminPage/AdminDashboard'
-import AdminCreateQuestions from './adminPage/AdminCreateQuestions'
+
+import AdminLayout from './admin/AdminLayout'
+import AdminDashboardHome from './adminPage/AdminDashboard'
+import CreateTestSeries from './adminPage/AdminCreateTestSeries'
+import CreateMockTest from './adminPage/AdminCreateMockTest'
+import CreateQuestion from './adminPage/AdminCreateQuestions'
+import UploadPYQ from './adminPage/AdminUploadPyq'
+import AdminExamCategoryPage from './adminPage/AdminExamCategoryPage'
+import ExamSubCategoryPage from './adminPage/ExamSubCategoryPage'
 
 
 
@@ -38,10 +42,21 @@ export default function App() {
         <Routes>
 
 
-          <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/admin" element={<AdminLayout />}>
+            <Route index element={<AdminDashboardHome />} />
+            <Route path="testseries/create" element={<CreateTestSeries />} />
+            <Route path="mocktest/create" element={<CreateMockTest />} />
+            <Route path="questions/create" element={<CreateQuestion />} />
+            <Route path="pyq/upload" element={<UploadPYQ />} />
+            <Route path="exam-categories" element={<AdminExamCategoryPage />} />
+            <Route path="exam-subcategories" element={<ExamSubCategoryPage />} />
+          </Route>
+
+          {/* <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/admin/testseries/create" element={<AdminCreateTestSeries />} />
           <Route path="/admin/mocktest/create" element={<AdminCreateMockTest />} />
           <Route path="/admin/questions/create" element={<AdminCreateQuestions />} />
+          <Route path="/admin/pyq/upload" element={<AdminUploadPyq />} /> */}
 
 
           <Route path="/" element={<MainPage />} />
