@@ -1,104 +1,32 @@
-import React, { useEffect, useState } from "react";
-import "./AdminTestSeries.css";
-
-const ADMIN_ID = 5;
+// src/pages/admin/AdminCreateTestSeries.jsx
+import React from "react";
+import "../../../styles/admin/adminTestSeries/AdminCreateTestSeries.css";
+import useAdminTestSeries from "../../../hooks/admin/useAdminTestSeries";
 
 export default function AdminCreateTestSeries() {
-    const [categories, setCategories] = useState([]);
-    const [subCategories, setSubCategories] = useState([]);
-    const [previousSeries, setPreviousSeries] = useState([]);
-
-    const [categoryId, setCategoryId] = useState("");
-    const [examSubCategoryId, setExamSubCategoryId] = useState("");
-    const [title, setTitle] = useState("");
-
-    const [mockTests, setMockTests] = useState([]);
-    const [status, setStatus] = useState("DRAFT");
-    const [preview, setPreview] = useState(false);
-    const [loading, setLoading] = useState(false);
-
-    useEffect(() => {
-        fetch("http://localhost:8080/rk/user/exam-category")
-            .then(res => res.json())
-            .then(setCategories);
-    }, []);
-
-    useEffect(() => {
-        fetch("http://localhost:8080/rk/user/testseries")
-            .then(res => res.json())
-            .then(setPreviousSeries)
-            .catch(() => setPreviousSeries([]));
-    }, []);
-
-    const onCategoryChange = (id) => {
-        setCategoryId(id);
-        const selected = categories.find(c => c.id === Number(id));
-        setSubCategories(selected ? selected.subCategories : []);
-        setExamSubCategoryId("");
-    };
-
-    const addMock = () => {
-        setMockTests([...mockTests, {
-            title: "",
-            durationMinutes: "",
-            totalQuestions: "",
-            totalMarks: "",
-            isActive: true,
-            discussionEnabled: true,
-            questionDiscussionEnabled: false
-        }]);
-    };
-
-    const updateMock = (i, field, value) => {
-        const copy = [...mockTests];
-        copy[i][field] = value;
-        setMockTests(copy);
-    };
-
-    const removeMock = (i) => {
-        setMockTests(mockTests.filter((_, index) => index !== i));
-    };
-
-    const moveMock = (index, dir) => {
-        const copy = [...mockTests];
-        const target = index + dir;
-        if (target < 0 || target >= copy.length) return;
-        [copy[index], copy[target]] = [copy[target], copy[index]];
-        setMockTests(copy);
-    };
-
-    const copyFromSeries = (id) => {
-        const selected = previousSeries.find(p => p.id === Number(id));
-        if (selected?.mockTests) setMockTests(selected.mockTests);
-    };
-
-    const submit = () => {
-        if (!title || !examSubCategoryId || mockTests.length === 0) {
-            alert("Fill all required fields");
-            return;
-        }
-
-        setLoading(true);
-        fetch(`http://localhost:8080/rk/admin/testseries?adminId=${ADMIN_ID}`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                title,
-                examSubCategoryId: Number(examSubCategoryId),
-                status,
-                mockTests
-            })
-        })
-            .then(res => {
-                if (!res.ok) throw new Error("Failed");
-                alert("✅ Test Series Saved");
-                setMockTests([]);
-                setTitle("");
-                setPreview(false);
-            })
-            .catch(err => alert(err.message))
-            .finally(() => setLoading(false));
-    };
+    const {
+        categories,
+        subCategories,
+        previousSeries,
+        categoryId,
+        examSubCategoryId,
+        title,
+        mockTests,
+        status,
+        preview,
+        loading,
+        setTitle,
+        setExamSubCategoryId,
+        setStatus,
+        setPreview,
+        onCategoryChange,
+        addMock,
+        updateMock,
+        removeMock,
+        moveMock,
+        copyFromSeries,
+        submit,
+    } = useAdminTestSeries();
 
     if (preview) {
         return (

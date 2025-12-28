@@ -1,8 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "./AdminDashboard.css";
-import Header from "../pages/home/Header";
-
+import Header from "../../home/Header";
+import "../../../styles/admin/adminDashboard/adminDashboard.css";
 export default function AdminDashboard() {
     const navigate = useNavigate();
 
@@ -45,55 +44,7 @@ export default function AdminDashboard() {
             desc: "Upload previous year question papers (PDF)",
             icon: "📄",
             path: "/admin/pyq/upload"
-        }
-
-
-
-
-
-        // {
-        //     title: "Edit Test Series",
-        //     desc: "Edit, publish or draft test series",
-        //     icon: "✏️",
-        //     path: "/admin/testseries/edit"
-        // },
-
-        // {
-        //     title: "Reorder Mock Tests",
-        //     desc: "Drag & drop mock tests",
-        //     icon: "🔀",
-        //     path: "/admin/mocktest/reorder"
-        // },
-        // {
-        //     title: "Add Questions",
-        //     desc: "MCQ, Numeric & Descriptive",
-        //     icon: "❓",
-        //     path: "/admin/questions"
-        // },
-        // {
-        //     title: "Discussions",
-        //     desc: "Moderate doubts & discussions",
-        //     icon: "💬",
-        //     path: "/admin/discussions"
-        // },
-        // {
-        //     title: "Reviews & Ratings",
-        //     desc: "Monitor user feedback",
-        //     icon: "⭐",
-        //     path: "/admin/reviews"
-        // },
-        // {
-        //     title: "Draft / Publish",
-        //     desc: "Control visibility",
-        //     icon: "🚀",
-        //     path: "/admin/publish"
-        // },
-        // {
-        //     title: "Analytics",
-        //     desc: "Users, attempts & performance",
-        //     icon: "📊",
-        //     path: "/admin/analytics"
-        // }
+        },
     ];
 
     return (

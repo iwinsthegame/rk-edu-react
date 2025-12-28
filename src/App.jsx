@@ -20,9 +20,11 @@ import WhatsappButton from './components/watsapp/WhatsappButton'
 import './App.css'
 
 import AdminLayout from './admin/AdminLayout'
-import AdminDashboardHome from './adminPage/AdminDashboard'
-import CreateTestSeries from './adminPage/AdminCreateTestSeries'
-import CreateMockTest from './adminPage/AdminCreateMockTest'
+import AdminDashboardHome from './pages/admin/adminDashboard/AdminDashboard'
+import CreateTestSeries from './pages/admin/adminTestSeries/AdminCreateTestSeries'
+
+
+import CreateMockTest from './pages/admin/adminMockTest/AdminCreateMockTest'
 import CreateQuestion from './adminPage/AdminCreateQuestions'
 import UploadPYQ from './adminPage/AdminUploadPyq'
 import AdminExamCategoryPage from './adminPage/AdminExamCategoryPage'
