@@ -1,4 +1,4 @@
-// src/api/admin/adminMockTestApi.js
+
 import { admin_api, user_api } from "../../axiosClient"
 
 /* USER */

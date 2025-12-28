@@ -24,11 +24,9 @@ import AdminDashboardHome from './pages/admin/adminDashboard/AdminDashboard'
 import CreateTestSeries from './pages/admin/adminTestSeries/AdminCreateTestSeries'
 import CreateMockTest from './pages/admin/adminMockTest/AdminCreateMockTest'
 import CreateQuestion from './pages/admin/adminQuestions/AdminCreateQuestion'
-
-
 import UploadPYQ from './pages/admin/adminPYQ/AdminUploadPyq'
-import AdminExamCategoryPage from './adminPage/AdminExamCategoryPage'
-import ExamSubCategoryPage from './adminPage/ExamSubCategoryPage'
+import AdminExamCategoryPage from './pages/admin/adminExamCategory/AdminCreateExamCategory.jsx'
+import ExamSubCategoryPage from './pages/admin/adminExamSubCategory/ExamSubCategoryPage.jsx'
 
 
 
