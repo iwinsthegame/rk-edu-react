@@ -9,7 +9,7 @@ const admin_api = axios.create({
   headers: {
     "Content-Type": "application/json",
   },
-  timeout: 15000, 
+  timeout: 1500000, 
 });
 
 const user_api = axios.create({
@@ -17,7 +17,7 @@ const user_api = axios.create({
   headers: {
     "Content-Type": "application/json",
   },
-  timeout: 15000, 
+  timeout: 1500000, 
 });
 
 export { admin_api, user_api };
