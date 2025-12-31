@@ -1,20 +1,19 @@
 import axios from "axios";
 
+// Centralized API base URL for the app.
+// Use Vite env `VITE_API_BASE_URL` in development/production; fall back to Render URL.
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ?? "https://edu-bac-3.onrender.com";
 
-// Prefer .env, fallback to localhost
-// 
-
-const Admin_BASE_URL = import.meta.env.ADMIN_BASE_API_URL ?? "https://edu-bac-3.onrender.com/rk/admin";
-const User_BASE_URL = import.meta.env.USER_BASE_API_URL ?? "https://edu-bac-3.onrender.com/rk/user";
-
-
+// Admin and User API roots are based on the main base URL
+const Admin_BASE_URL = `${API_BASE_URL}/rk/admin`;
+const User_BASE_URL = `${API_BASE_URL}/rk/user`;
 
 const admin_api = axios.create({
   baseURL: Admin_BASE_URL,
   headers: {
     "Content-Type": "application/json",
   },
-  timeout: 1500000, 
+  timeout: 1500000,
 });
 
 const user_api = axios.create({
@@ -22,10 +21,10 @@ const user_api = axios.create({
   headers: {
     "Content-Type": "application/json",
   },
-  timeout: 1500000, 
+  timeout: 1500000,
 });
 
-export { admin_api, user_api };
+export { API_BASE_URL, admin_api, user_api };
 
 
 //will do secueity later

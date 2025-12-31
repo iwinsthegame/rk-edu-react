@@ -1,5 +1,6 @@
 import React from "react";
 import "./PricingPage.css";
+import { API_BASE_URL } from "../../api/axiosClient";
 
 const plans = [
     {
@@ -58,7 +59,7 @@ export default function PricingPage() {
             const userId = 1;
 
             const res = await fetch(
-                `http://localhost:8080/api/payment/create?userId=${userId}&productId=${plan.id}`,
+                `${API_BASE_URL}/api/payment/create?userId=${userId}&productId=${plan.id}`,
                 { method: "POST" }
             );
 
@@ -74,7 +75,7 @@ export default function PricingPage() {
 
                 handler: async function () {
                     await fetch(
-                        `http://localhost:8080/api/payment/verify?razorpayOrderId=${order.razorpayOrderId}`,
+                        `${API_BASE_URL}/api/payment/verify?razorpayOrderId=${order.razorpayOrderId}`,
                         { method: "POST" }
                     );
                     alert("🎉 Payment Successful! Plan Activated");

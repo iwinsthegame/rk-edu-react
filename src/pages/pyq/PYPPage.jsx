@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./PYPPage.css";
-import { user_api } from "../../api/axiosClient";
+import { user_api, API_BASE_URL } from "../../api/axiosClient";
 import { useNavigate } from "react-router-dom";
 import Header from "../home/Header";
 import Footer from "../home/Footer";
@@ -217,7 +217,7 @@ export default function PYPPage() {
                                 <img
                                     src={
                                         exam.logoUrl
-                                            ? `http://localhost:8080${exam.logoUrl}`
+                                            ? `${API_BASE_URL}${exam.logoUrl}`
                                             : "/default-exam.png"
                                     }
                                     alt={exam.name}

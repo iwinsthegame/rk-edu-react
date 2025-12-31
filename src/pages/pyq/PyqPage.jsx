@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import "./PyqPage.css";
-import { user_api } from "../../api/axiosClient";
+import { user_api, API_BASE_URL } from "../../api/axiosClient";
 import { useParams } from "react-router-dom";
 import Header from "../home/Header";
 import Footer from "../home/Footer";
@@ -246,7 +246,7 @@ function PyqCard({ pyq, index, onUnlock }) {
 
             <div className="pyq-actions">
                 <a
-                    href={`http://localhost:8080${pyq.pdfUrl}`}
+                    href={`${API_BASE_URL}${pyq.pdfUrl}`}
                     target="_blank"
                     rel="noreferrer"
                     className="btn-outline"

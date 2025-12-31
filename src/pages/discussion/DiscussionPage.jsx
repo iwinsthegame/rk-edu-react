@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./discussion.css";
+import { API_BASE_URL } from "../../api/axiosClient";
 
 const PAGE_SIZE = 5;
 
@@ -17,7 +18,7 @@ export default function DiscussionPage({ entityType, entityId }) {
         setLoading(true);
 
         fetch(
-            `http://localhost:8080/api/discussion?entityType=${entityType}&entityId=${entityId}`
+            `${API_BASE_URL}/api/discussion?entityType=${entityType}&entityId=${entityId}`
         )
             .then(res => res.json())
             .then(res => {
@@ -89,7 +90,7 @@ function CommentBox({ entityType, entityId, onPost, posting, setPosting }) {
 
         setPosting(true);
 
-        fetch("http://localhost:8080/api/discussion", {
+        fetch(`${API_BASE_URL}/api/discussion`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -138,7 +139,7 @@ function DiscussionCard({ data, replies, entityType, entityId, refresh }) {
     const reply = () => {
         if (!replyText.trim()) return;
 
-        fetch("http://localhost:8080/api/discussion", {
+        fetch(`${API_BASE_URL}/api/discussion`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -155,7 +156,7 @@ function DiscussionCard({ data, replies, entityType, entityId, refresh }) {
     };
 
     const upvote = () => {
-        fetch(`http://localhost:8080/api/discussion/${data.id}/upvote`, {
+        fetch(`${API_BASE_URL}/api/discussion/${data.id}/upvote`, {
             method: "POST"
         }).then(refresh);
     };
@@ -164,7 +165,7 @@ function DiscussionCard({ data, replies, entityType, entityId, refresh }) {
         <div className="discussion-card">
             <img
                 className="avatar"
-                src={data.profileImage || "https://i.pravatar.cc/40"}
+                src={data.profileImage ? `${API_BASE_URL}${data.profileImage}` : "https://i.pravatar.cc/40"}
                 alt="user"
             />
 
@@ -202,7 +203,7 @@ function DiscussionCard({ data, replies, entityType, entityId, refresh }) {
                     <div key={r.id} className="reply">
                         <img
                             className="avatar"
-                            src={r.profileImage || "https://i.pravatar.cc/30"}
+                            src={r.profileImage ? `${API_BASE_URL}${r.profileImage}` : "https://i.pravatar.cc/30"}
                             alt="user"
                         />
                         <div>

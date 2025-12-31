@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { user_api } from "../../api/axiosClient";
+import { user_api, API_BASE_URL } from "../../api/axiosClient";
 
 export default function PyqListPage() {
     const { subCategoryId } = useParams();
@@ -23,7 +23,7 @@ export default function PyqListPage() {
                         <p>Year: {p.year}</p>
 
                         <a
-                            href={`http://localhost:8080${p.pdfUrl}`}
+                            href={`${API_BASE_URL}${p.pdfUrl}`}
                             target="_blank"
                             rel="noreferrer"
                             className="btn-download"

@@ -3,6 +3,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import useStartTest from "../../hooks/mocktest/useStartTest";
 import "../../styles/Attempt.css";
+import { API_BASE_URL } from "../../api/axiosClient";
 
 export default function StartTest() {
   const { mocktestId } = useParams();
@@ -189,7 +190,7 @@ export default function StartTest() {
                 <img
                   src={
                     user?.profileImage
-                      ? `http://localhost:8080${user.profileImage}`
+                      ? `${API_BASE_URL}${user.profileImage}`
                       : "/assets/default-user.png"
                   }
                   alt="Profile"
