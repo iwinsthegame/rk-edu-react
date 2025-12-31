@@ -1,8 +1,13 @@
 import axios from "axios";
 
+
 // Prefer .env, fallback to localhost
-const Admin_BASE_URL = import.meta.env.ADMIN_BASE_API_URL ?? "http://localhost:8080/rk/admin";
-const User_BASE_URL = import.meta.env.USER_BASE_API_URL ?? "http://localhost:8080/rk/user";
+// 
+
+const Admin_BASE_URL = import.meta.env.ADMIN_BASE_API_URL ?? "https://edu-bac-3.onrender.com/rk/admin";
+const User_BASE_URL = import.meta.env.USER_BASE_API_URL ?? "https://edu-bac-3.onrender.com/rk/user";
+
+
 
 const admin_api = axios.create({
   baseURL: Admin_BASE_URL,
