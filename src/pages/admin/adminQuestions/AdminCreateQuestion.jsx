@@ -1,5 +1,5 @@
 import React from "react";
-import "../../../styles/admin/adminQuestions/AdminCreateQuestion.css";
+import "../../../styles/admin/adminQuestions/adminCreateQuestion.css";
 import useAdminQuestions from "../../../hooks/admin/useAdminQuestions";
 
 

@@ -1,6 +1,6 @@
 // src/pages/admin/AdminCreateTestSeries.jsx
 import React from "react";
-import "../../../styles/admin/adminTestSeries/AdminCreateTestSeries.css";
+import "../../../styles/admin/adminTestSeries/adminCreateTestSeries.css";
 import useAdminTestSeries from "../../../hooks/admin/useAdminTestSeries";
 
 export default function AdminCreateTestSeries() {

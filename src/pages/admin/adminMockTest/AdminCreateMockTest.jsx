@@ -1,6 +1,6 @@
 // src/pages/admin/AdminCreateMockTest.jsx
 import React from "react";
-import "../../../styles/admin/adminMockTest/AdminCreateMockTest.css";
+import "../../../styles/admin/adminMockTest/adminCreateMockTest.css";
 import useAdminMockTest from "../../../hooks/admin/useAdminMockTest";
 
 
